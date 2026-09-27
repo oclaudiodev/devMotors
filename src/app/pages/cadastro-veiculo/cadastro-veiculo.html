@@ -1,0 +1,45 @@
+<main class="gerenciamento-container">
+  <h1 class="titulo-gerenciamento">Gerenciamento de Carros</h1>
+
+  <section class="painel-estoque">
+    
+    <header class="topo-tabela">
+      <span class="coluna-foto">Foto</span>
+      <span class="coluna-marca">Marca</span>
+      <span class="coluna-modelo">Modelo</span>
+      <span class="coluna-estoque">Estoque</span>
+      <div class="coluna-acoes">
+        <button type="button" class="btn-atualizar" title="Atualizar dados">
+          <img src="images/refresh.png" alt="Ícone de Atualizar" class="icone-btn" />
+        </button>
+      </div>
+    </header>
+
+    <!-- Lista de Veículos utilizando Lista Não Ordenada (<ul>) -->
+    <ul class="lista-carros">
+      @for (carro of listaVeiculos; track carro.modelo) {
+        <li class="linha-carro">
+          <div class="coluna-foto">
+            <img [src]="carro.imagem" [alt]="carro.modelo" class="img-carro-thumb" />
+          </div>
+          <span class="coluna-marca">{{ carro.marca }}</span>
+          <span class="coluna-modelo">{{ carro.modelo }}</span>
+          <span class="coluna-estoque">{{ carro.estoque }}</span>
+          <div class="coluna-acoes">
+            <button type="button" class="btn-editar" title="Editar veículo">
+              <img src="images/edit.png" alt="Ícone de Editar" class="icone-btn" />
+            </button>
+            <button type="button" class="btn-excluir" title="Excluir veículo">
+              <img src="images/lixeira.png" alt="Ícone de Excluir" class="icone-btn" />
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
+
+    <footer class="rodape-painel">
+      <button type="button" class="btn-registrar">Registrar Carro</button>
+    </footer>
+
+  </section>
+</main>
