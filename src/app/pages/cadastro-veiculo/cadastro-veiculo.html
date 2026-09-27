@@ -1,93 +1,45 @@
-<div class="gerenciamento-container">
+<main class="gerenciamento-container">
   <h1 class="titulo-gerenciamento">Gerenciamento de Carros</h1>
 
-  <!-- Card Principal -->
-  <div class="painel-estoque">
-    <div class="topo-tabela">
-      <div class="coluna-foto">Foto</div>
-      <div class="coluna-marca">Marca</div>
-      <div class="coluna-modelo">Modelo</div>
-      <div class="coluna-estoque">Estoque</div>
+  <section class="painel-estoque">
+    
+    <header class="topo-tabela">
+      <span class="coluna-foto">Foto</span>
+      <span class="coluna-marca">Marca</span>
+      <span class="coluna-modelo">Modelo</span>
+      <span class="coluna-estoque">Estoque</span>
       <div class="coluna-acoes">
-        <!-- Ícone de atualizar -->
-        <button class="btn-atualizar" title="Atualizar">
-          <img src="images/refresh.png" alt="Atualizar" class="icone-btn" />
+        <button type="button" class="btn-atualizar" title="Atualizar dados">
+          <img src="images/refresh.png" alt="Ícone de Atualizar" class="icone-btn" />
         </button>
       </div>
-    </div>
+    </header>
 
-    <!-- Lista dos Carros -->
-    <div class="linhas-tabela">
-      <!-- Veículo 1: BYD King -->
-      <div class="linha-carro">
-        <div class="coluna-foto">
-          <img
-            src="https://gabcomercio.azureedge.net/godrive/blog/byd-king-ficha-tecnica/main_image.webp"
-            alt="BYD King"
-            class="img-carro-thumb"
-          />
-        </div>
-        <span class="coluna-marca">BYD</span>
-        <span class="coluna-modelo">King</span>
-        <span class="coluna-estoque">1</span>
-        <div class="coluna-acoes">
-          <button class="btn-editar" title="Editar">
-            <img src="images/edit.png" alt="Editar" class="icone-btn" />
-          </button>
-          <button class="btn-excluir" title="Excluir">
-            <img src="images/lixeira.png" alt="Excluir" class="icone-btn" />
-          </button>
-        </div>
-      </div>
+    <!-- Lista de Veículos utilizando Lista Não Ordenada (<ul>) -->
+    <ul class="lista-carros">
+      @for (carro of listaVeiculos; track carro.modelo) {
+        <li class="linha-carro">
+          <div class="coluna-foto">
+            <img [src]="carro.imagem" [alt]="carro.modelo" class="img-carro-thumb" />
+          </div>
+          <span class="coluna-marca">{{ carro.marca }}</span>
+          <span class="coluna-modelo">{{ carro.modelo }}</span>
+          <span class="coluna-estoque">{{ carro.estoque }}</span>
+          <div class="coluna-acoes">
+            <button type="button" class="btn-editar" title="Editar veículo">
+              <img src="images/edit.png" alt="Ícone de Editar" class="icone-btn" />
+            </button>
+            <button type="button" class="btn-excluir" title="Excluir veículo">
+              <img src="images/lixeira.png" alt="Ícone de Excluir" class="icone-btn" />
+            </button>
+          </div>
+        </li>
+      }
+    </ul>
 
-      <!-- Veículo 2: Toyota Corolla Cross -->
-      <div class="linha-carro">
-        <div class="coluna-foto">
-          <img
-            src="https://cdn.motor1.com/images/mgl/ljVZ1/s1/2022-toyota-corolla-cross-us-spec.jpg"
-            alt="Toyota Corolla Cross"
-            class="img-carro-thumb"
-          />
-        </div>
-        <span class="coluna-marca">Toyota</span>
-        <span class="coluna-modelo">Corolla Cross</span>
-        <span class="coluna-estoque">1</span>
-        <div class="coluna-acoes">
-          <button class="btn-editar" title="Editar">
-            <img src="images/edit.png" alt="Editar" class="icone-btn" />
-          </button>
-          <button class="btn-excluir" title="Excluir">
-            <img src="images/lixeira.png" alt="Excluir" class="icone-btn" />
-          </button>
-        </div>
-      </div>
+    <footer class="rodape-painel">
+      <button type="button" class="btn-registrar">Registrar Carro</button>
+    </footer>
 
-      <!-- Veículo 3: Jeep Renegade -->
-      <div class="linha-carro">
-        <div class="coluna-foto">
-          <img
-            src="https://www.jeep.com.br/content/dam/jeep/open-graph/open-graph-renegade.webp"
-            alt="Jeep Renegade"
-            class="img-carro-thumb"
-          />
-        </div>
-        <span class="coluna-marca">Jeep</span>
-        <span class="coluna-modelo">Renegade</span>
-        <span class="coluna-estoque">1</span>
-        <div class="coluna-acoes">
-          <button class="btn-editar" title="Editar">
-            <img src="images/edit.png" alt="Editar" class="icone-btn" />
-          </button>
-          <button class="btn-excluir" title="Excluir">
-            <img src="images/lixeira.png" alt="Excluir" class="icone-btn" />
-          </button>
-        </div>
-      </div>
-    </div>
-
-    <!-- Botão de Registrar Carro -->
-    <div class="rodape-painel">
-      <button class="btn-registrar">Registrar Carro</button>
-    </div>
-  </div>
-</div>
+  </section>
+</main>
