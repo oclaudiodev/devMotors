@@ -1,0 +1,96 @@
+.gerenciamento-container {
+  max-width: 950px;
+  margin: 60px auto;
+  padding: 0 20px;
+  color: #ffffff;
+}
+
+.titulo-gerenciamento {
+  font-size: 36px;
+  font-weight: 700;
+  text-align: center;
+  color: #ffffff;
+  margin-bottom: 30px;
+}
+
+.painel-estoque {
+  background-color: rgba(18, 18, 18, 0.85);
+  border: 1.5px solid #d4af37;
+  border-radius: 20px;
+  padding: 30px 40px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+.topo-tabela {
+  display: flex;
+  align-items: center;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  padding: 0 20px 15px 20px;
+}
+
+.coluna-foto { flex: 1.2; text-align: left; }
+.coluna-marca { flex: 2; text-align: left; }
+.coluna-modelo { flex: 2.2; text-align: left; }
+.coluna-estoque { flex: 1; text-align: center; }
+.coluna-acoes { flex: 1; display: flex; justify-content: flex-end; gap: 8px; }
+
+.img-carro-thumb {
+  width: 75px;
+  height: 48px;
+  object-fit: cover;
+  border-radius: 8px;
+  border: 1px solid #d4af37;
+}
+
+.linhas-tabela {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.linha-carro {
+  background-color: #e5e5e5;
+  color: #000000;
+  display: flex;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 12px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.btn-atualizar, .btn-editar, .btn-excluir {
+  background-color: transparent;
+  border: none;
+  padding: 4px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.icone-btn {
+  width: 22px;
+  height: 22px;
+  object-fit: contain;
+}
+
+.rodape-painel {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 25px;
+}
+
+.btn-registrar {
+  background-color: #d4af37;
+  color: #ffffff;
+  border: none;
+  padding: 12px 28px;
+  font-size: 18px;
+  font-weight: 700;
+  border-radius: 12px;
+  cursor: pointer;
+}
