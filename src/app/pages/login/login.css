@@ -1,0 +1,195 @@
+/* Configurações Gerais e Fundo Escuro */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+.login-page-container {
+    color: #ffffff;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Container do Card Centralizado */
+.login-card-container {
+    width: 100%;
+    max-width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.page-title {
+    font-size: 28px;
+    margin-bottom: 25px;
+    color: #ffffff;
+    font-weight: normal;
+}
+
+.login-card {
+    background-color: #1a1a1a;
+    border: 1px solid #e5c158;
+    border-radius: 12px;
+    display: flex;
+    padding: 40px;
+    width: 100%;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+    position: relative;
+}
+
+/* Lado Esquerdo (Formulário) */
+.login-form-side {
+    flex: 1;
+    padding-right: 30px;
+}
+
+.input-group {
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+}
+
+.input-group label {
+    font-size: 14px;
+    margin-bottom: 8px;
+    color: #ffffff;
+    font-weight: bold;
+}
+
+.input-group input {
+    background-color: #4a4a4a;
+    border: none;
+    border-radius: 6px;
+    padding: 12px;
+    color: #ffffff;
+    font-size: 14px;
+    outline: none;
+}
+
+.input-group input:focus {
+    border: 1px solid #e5c158;
+}
+
+.forgot-password {
+    font-size: 11px;
+    color: #aaaaaa;
+    text-decoration: none;
+    text-align: right;
+    margin-top: 5px;
+}
+
+.forgot-password:hover {
+    color: #e5c158;
+}
+
+.login-actions {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-top: 30px;
+}
+
+.btn-login {
+    background-color: #e5c158;
+    color: #121212;
+    border: none;
+    border-radius: 20px;
+    padding: 10px 30px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+}
+
+.btn-login:hover:not(:disabled) {
+    background-color: #d4ae47;
+}
+.btn-login:disabled {
+    background-color: #555555;
+    color: #888888;
+    cursor: not-allowed;
+}
+
+.btn-google,
+.google-icon-wrapper {
+    background-color: #ffffff;
+    border: none;
+    border-radius: 50%;
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+.google-icon {
+    color: #4285F4;
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Divisor Vertical */
+.card-divider {
+    width: 1px;
+    background-color: #e5c158;
+    margin: 0 20px;
+}
+
+/* Lado Direito (Cadastro / Boas-vindas) */
+.register-side {
+    flex: 1;
+    padding-left: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    position: relative;
+}
+
+.register-side h2 {
+    font-size: 15px;
+    color: #ffffff;
+    line-height: 1.5;
+    margin-bottom: 30px;
+    font-weight: normal;
+}
+
+.register-prompt {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.register-prompt span {
+    font-size: 13px;
+    color: #cccccc;
+}
+
+.btn-cadastrar {
+    background-color: #e5c158;
+    color: #121212;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 25px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 13px;
+}
+
+.btn-cadastrar:hover {
+    background-color: #d4ae47;
+}
+
+.google-icon-wrapper {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+}
