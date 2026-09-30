@@ -13,6 +13,6 @@ export class Menu {
   itensMenu = [
     { label: 'Início', link: '' },
     { label: 'Veículos', link: '#veiculos' },
-    { label: 'Carrinho', link: '#carrinho' },
+    { label: 'Carrinho', link: 'carrinho' },
   ];
 }
