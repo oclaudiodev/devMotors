@@ -1,36 +1,38 @@
-<main class="gerenciamento-container">
+<div class="gerenciamento-container">
   <h1 class="titulo-gerenciamento">Gerenciamento de Carros</h1>
 
   <section class="painel-estoque">
-    
     <header class="topo-tabela">
       <span class="coluna-foto">Foto</span>
       <span class="coluna-marca">Marca</span>
       <span class="coluna-modelo">Modelo</span>
+      <span class="coluna-ano">Ano</span>
       <span class="coluna-estoque">Estoque</span>
+      <span class="coluna-valor">Valor</span>
       <div class="coluna-acoes">
         <button type="button" class="btn-atualizar" title="Atualizar dados">
-          <img src="images/refresh.png" alt="Ícone de Atualizar" class="icone-btn" />
+          <img src="images/refresh.png" alt="Atualizar" class="icone-btn" />
         </button>
       </div>
     </header>
 
-    <!-- Lista de Veículos utilizando Lista Não Ordenada (<ul>) -->
     <ul class="lista-carros">
-      @for (carro of listaVeiculos; track carro.modelo) {
+      @for (carro of listaVeiculos; track carro) {
         <li class="linha-carro">
           <div class="coluna-foto">
             <img [src]="carro.imagem" [alt]="carro.modelo" class="img-carro-thumb" />
           </div>
           <span class="coluna-marca">{{ carro.marca }}</span>
           <span class="coluna-modelo">{{ carro.modelo }}</span>
+          <span class="coluna-ano">{{ carro.ano }}</span>
           <span class="coluna-estoque">{{ carro.estoque }}</span>
+          <span class="coluna-valor">R$ {{ carro.valor }}</span>
           <div class="coluna-acoes">
-            <button type="button" class="btn-editar" title="Editar veículo">
-              <img src="images/edit.png" alt="Ícone de Editar" class="icone-btn" />
+            <button type="button" class="btn-editar" (click)="abrirFormularioEditar(carro)" title="Editar">
+              <img src="images/edit.png" alt="Editar" class="icone-btn" />
             </button>
-            <button type="button" class="btn-excluir" title="Excluir veículo">
-              <img src="images/lixeira.png" alt="Ícone de Excluir" class="icone-btn" />
+            <button type="button" class="btn-excluir" (click)="abrirModalExcluir()" title="Excluir">
+              <img src="images/lixeira.png" alt="Excluir" class="icone-btn" />
             </button>
           </div>
         </li>
@@ -38,8 +40,84 @@
     </ul>
 
     <footer class="rodape-painel">
-      <button type="button" class="btn-registrar">Registrar Carro</button>
+      <button type="button" class="btn-registrar" (click)="abrirFormularioRegistro()">Registrar Carro</button>
     </footer>
-
   </section>
-</main>
+
+  @if (exibirFormulario) {
+    <div class="modal-overlay">
+      <div class="modal-card">
+        <h2>{{ modoEdicao ? 'ALTERAR CARRO' : 'REGISTRAR CARRO' }}</h2>
+        <p class="subtitulo-modal">Dados do carro</p>
+
+        <form class="form-grid">
+          <div class="campo-duplo">
+            <div class="campo">
+              <label for="marca">Marca</label>
+              <input id="marca" name="marca" type="text" [value]="modoEdicao ? carroEmEdicao.marca : ''" placeholder="Ex: BYD" />
+            </div>
+            <div class="campo">
+              <label for="modelo">Modelo</label>
+              <input id="modelo" name="modelo" type="text" [value]="modoEdicao ? carroEmEdicao.modelo : ''" placeholder="Ex: King" />
+            </div>
+          </div>
+
+          <div class="campo-duplo">
+            <div class="campo">
+              <label for="ano">Ano</label>
+              <input id="ano" name="ano" type="number" [value]="modoEdicao ? carroEmEdicao.ano : ''" placeholder="2025" />
+            </div>
+            <div class="campo">
+              <label for="estoque">Estoque</label>
+              <input id="estoque" name="estoque" type="number" [value]="modoEdicao ? carroEmEdicao.estoque : ''" placeholder="1" />
+            </div>
+          </div>
+
+          <div class="campo-duplo">
+            <div class="campo">
+              <label for="valor">Preço</label>
+              <input id="valor" name="valor" type="number" [value]="modoEdicao ? carroEmEdicao.valor : ''" placeholder="175000" />
+            </div>
+            <div class="campo">
+              <label for="km">KMs</label>
+              <input id="km" name="km" type="number" [value]="modoEdicao ? carroEmEdicao.quilometragem : ''" placeholder="0" />
+            </div>
+          </div>
+
+          <div class="campo-imagem">
+            <label for="imagem">Caminho/URL da Imagem</label>
+            <input id="imagem" name="imagem" type="text" [value]="modoEdicao ? carroEmEdicao.imagem : ''" placeholder="images/byd-king.png" />
+
+            <div class="upload-box">
+              <label for="file-upload" class="btn-upload">
+                Adicionar imagens +
+              </label>
+              <input id="file-upload" name="file-upload" type="file" />
+            </div>
+          </div>
+
+          <div class="acoes-form">
+            <button type="button" class="btn-cancelar" (click)="fecharModal()">Cancelar</button>
+            <button type="button" class="btn-salvar" (click)="fecharModal()">
+              {{ modoEdicao ? 'Alterar' : 'ADICIONAR CARRO' }}
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  }
+  
+  @if (exibirModalExcluir) {
+    <div class="modal-overlay">
+      <div class="modal-card modal-excluir">
+        <h2>EXCLUIR CARRO</h2>
+        <p class="subtitulo-modal">Confirmar Exclusão</p>
+
+        <div class="botoes-confirmacao">
+          <button type="button" class="btn-nao" (click)="fecharModal()">Não</button>
+          <button type="button" class="btn-sim" (click)="fecharModal()">Sim</button>
+        </div>
+      </div>
+    </div>
+  }
+</div>
