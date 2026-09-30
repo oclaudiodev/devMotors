@@ -1,27 +1,5 @@
 import { Component } from '@angular/core';
-
-// 1. Classe de Modelo representando a entidade Veículo
-export class Veiculo {
-  marca: string;
-  modelo: string;
-  estoque: number;
-  quilometragem: number;
-  imagem: string;
-
-  constructor(
-    marca: string,
-    modelo: string,
-    estoque: number,
-    quilometragem: number,
-    imagem: string
-  ) {
-    this.marca = marca;
-    this.modelo = modelo;
-    this.estoque = estoque;
-    this.quilometragem = quilometragem;
-    this.imagem = imagem;
-  }
-}
+import { Veiculo } from '../models/veiculo.model';
 
 @Component({
   selector: 'app-cadastro-veiculo',
@@ -31,28 +9,35 @@ export class Veiculo {
   styleUrl: './cadastro-veiculo.css'
 })
 export class CadastroVeiculo {
-  // 2. Vetor de objetos (Instâncias da classe Veiculo)
   listaVeiculos: Veiculo[] = [
-    new Veiculo(
-      'BYD',
-      'King',
-      1,
-      0,
-      'https://gabcomercio.azureedge.net/godrive/blog/byd-king-ficha-tecnica/main_image.webp'
-    ),
-    new Veiculo(
-      'Toyota',
-      'Corolla Cross',
-      1,
-      15000,
-      'https://cdn.motor1.com/images/mgl/ljVZ1/s1/2022-toyota-corolla-cross-us-spec.jpg'
-    ),
-    new Veiculo(
-      'Jeep',
-      'Renegade',
-      1,
-      32000,
-      'https://www.jeep.com.br/content/dam/jeep/open-graph/open-graph-renegade.webp'
-    )
+    new Veiculo('BYD', 'King', 1, 0, 'images/byd-king.png', 175000, 2025),
+    new Veiculo('Toyota', 'Corolla Cross', 1, 15000, 'images/corolla-cross.png', 160000, 2022),
+    new Veiculo('Jeep', 'Renegade', 1, 32000, 'images/jeep-renegade.png', 115000, 2021)
   ];
+
+  exibirFormulario: boolean = false;
+  exibirModalExcluir: boolean = false;
+  modoEdicao: boolean = false;
+
+  carroEmEdicao: Veiculo = new Veiculo('', '', 0, 0, '', 0, 0);
+
+  abrirFormularioRegistro() {
+    this.modoEdicao = false;
+    this.exibirFormulario = true;
+  }
+
+  abrirFormularioEditar(carro: Veiculo) {
+    this.modoEdicao = true;
+    this.carroEmEdicao = carro;
+    this.exibirFormulario = true;
+  }
+
+  abrirModalExcluir() {
+    this.exibirModalExcluir = true;
+  }
+
+  fecharModal() {
+    this.exibirFormulario = false;
+    this.exibirModalExcluir = false;
+  }
 }
