@@ -1,0 +1,63 @@
+<div class="register-page-container">
+    <div class="register-card-container">
+        <h1 class="page-title">Registre - se</h1>
+
+        <div class="register-card">
+
+            <!-- Lado Esquerdo: Formulário de Cadastro -->
+            <div class="register-form-side">
+
+                    <div class="input-group">
+                        <label for="nome">Nome</label>
+                        <input type="text" id="nome" name="nome" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="cpf">CPF</label>
+                        <input type="text" id="cpf" name="cpf" required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">Email</label>
+                        <input type="email" id="email" name="email"required>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">Senha</label>
+                        <input type="password" id="senha" name="senha" required >
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirme-senha">Confirme a Senha</label>
+                        <input type="password" id="confirme-senha" name="confirme-senha" required >
+                    </div>
+
+                    <div class="register-actions">
+                        <button type="submit" class="btn-cadastrar-main">
+                            Cadastrar
+                        </button>
+                        <button type="button" class="btn-google">
+                            <span class="google-icon">G</span>
+                        </button>
+                    </div>
+            </div>
+
+            <!-- Divisor Vertical -->
+            <div class="card-divider"></div>
+
+            <!-- Lado Direito: Boas-vindas e Atalho para Login -->
+            <div class="login-redirect-side">
+                <h2>BEM VINDO A MELHOR PAGINA DE VENDA DE CARROS</h2>
+                <div class="login-prompt">
+                    <span>Já tem cadastro?</span>
+                    <button type="button" class="btn-login-link" (click)="voltarParaLogin()">Login</button>
+                </div>
+                <!-- Ícone do Google decorativo igual ao da imagem -->
+                <div class="google-icon-wrapper">
+                    <span class="google-icon">G</span>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
