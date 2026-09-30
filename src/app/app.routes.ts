@@ -10,7 +10,7 @@ export const routes: Routes = [
   { path: 'carrinho', component: Carrinho },
   { path: 'login', component: Login },
   { path: 'cadastro-veiculo', component: CadastroVeiculo },
-];
-  { path: 'cadastro-veiculo', component: CadastroVeiculo },
   { path: 'registro', component: Registro }
 ];
+
+

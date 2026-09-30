@@ -12,6 +12,5 @@ import { Footer } from './shared/footer/footer';
 
 export class App {
   titulo = 'devMotors';
-  nome = 'José'
 }
 
