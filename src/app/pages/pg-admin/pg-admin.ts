@@ -1,9 +1,11 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
-  imports: [],
   selector: 'app-pg-admin',
-  styleUrl: './pg-admin.css',
+  standalone: true,
+  imports: [RouterLink],
   templateUrl: './pg-admin.html',
+  styleUrls: ['./pg-admin.css'],
 })
 export class PgAdmin {}
