@@ -1,0 +1,83 @@
+<main class="conteudo">
+  <h1>Clientes</h1>
+
+  <section class="painel">
+    <div class="cabecalho-lista">
+      <span class="col-nome">Nome</span>
+      <span class="col-cpf">CPF</span>
+      <button class="icone branco" (click)="carregar()" title="Atualizar">
+        <svg viewBox="0 0 24 24"><path d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z"/></svg>
+      </button>
+    </div>
+
+    @for (c of clientes; track c.id) {
+      <div class="linha">
+        <span class="col-nome">{{ c.nome }}</span>
+        <span class="col-cpf">{{ c.cpf }}</span>
+        <div class="acoes">
+          <button class="icone preto" (click)="abrirAlterar(c)" title="Alterar">
+            <svg viewBox="0 0 24 24"><path d="M3 17.25V21h3.75L17.81 9.94l-3.75-3.75L3 17.25zM20.71 7.04a1 1 0 000-1.41l-2.34-2.34a1 1 0 00-1.41 0l-1.83 1.83 3.75 3.75 1.83-1.83z"/></svg>
+          </button>
+          <button class="icone vermelho" (click)="abrirExcluir(c)" title="Excluir">
+            <svg viewBox="0 0 24 24"><path d="M6 19c0 1.1.9 2 2 2h8c1.1 0 2-.9 2-2V7H6v12zM8 9h8v10H8V9zm7.5-5l-1-1h-5l-1 1H5v2h14V4h-3.5z"/></svg>
+          </button>
+        </div>
+      </div>
+    } @empty {
+      <p class="vazio">Nenhum cliente cadastrado.</p>
+    }
+
+    <div class="rodape-painel">
+      <button class="botao-dourado quadrado" (click)="abrirRegistrar()">Registrar novo Cliente</button>
+    </div>
+  </section>
+</main>
+
+<!-- JANELAS (só aparecem quando "modal" tem valor) -->
+@if (modal) {
+  <div class="fundo-modal" (click)="fechar()">
+
+    <!-- REGISTRAR / ALTERAR (mesmo formulário) -->
+    @if (modal === 'registrar' || modal === 'alterar') {
+      <div class="cartao"
+           [class.registrar]="modal === 'registrar'"
+           [class.alterar]="modal === 'alterar'"
+           (click)="$event.stopPropagation()">
+        <h2>{{ modal === 'registrar' ? 'Registrar Cliente' : 'Dados do cliente' }}</h2>
+
+        <label for="nome">Nome</label>
+        <input id="nome" [(ngModel)]="cliente.nome">
+
+        <label for="cpf">CPF</label>
+        <input id="cpf" [(ngModel)]="cliente.cpf">
+
+        <label for="email">Email</label>
+        <input id="email" type="email" [(ngModel)]="cliente.email">
+
+        <label for="senha">Senha</label>
+        <input id="senha" type="password" [(ngModel)]="cliente.senha">
+
+        <label for="confirma">Confirme a Senha</label>
+        <input id="confirma" type="password" [(ngModel)]="confirmaSenha">
+
+        <div class="direita">
+          <button class="botao-dourado pilula" (click)="salvar()">
+            {{ modal === 'registrar' ? 'Cadastrar cliente' : 'Alterar' }}
+          </button>
+        </div>
+      </div>
+    }
+
+    <!-- EXCLUIR -->
+    @if (modal === 'excluir') {
+      <div class="cartao excluir" (click)="$event.stopPropagation()">
+        <h2>Confirmar Exclusão</h2>
+        <div class="botoes-excluir">
+          <button class="botao-dourado pilula" (click)="fechar()">Não</button>
+          <button class="botao-contorno pilula" (click)="confirmarExclusao()">Sim</button>
+        </div>
+      </div>
+    }
+
+  </div>
+}
