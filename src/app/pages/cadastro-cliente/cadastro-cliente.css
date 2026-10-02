@@ -1,4 +1,3 @@
-/* ===== PALETA ===== */
 :host {
   --dourado: #d4af37;
   --preto: #000;
@@ -8,9 +7,11 @@
   --vermelho: #e5252a;
   --branco: #fff;
 }
-* { box-sizing: border-box; }
 
-/* ===== ÁREA DE CLIENTES (centralizada) ===== */
+* {
+  box-sizing: border-box;
+}
+
 .conteudo {
   display: flex;
   flex-direction: column;
@@ -20,52 +21,248 @@
   color: var(--branco);
   font-family: 'Ubuntu', Arial, sans-serif;
 }
-h1 { text-align: center; font-size: 28px; font-weight: 500; margin: 0 0 18px; }
 
-/* ===== PAINEL DA LISTA ===== */
-.painel { width: 100%; max-width: 1100px; margin: 0 auto; padding: 36px 56px 40px; border: 1px solid var(--dourado); border-radius: 22px; background: rgba(20,20,20,.72); box-shadow: 0 0 12px rgba(212,175,55,.25); }
-.cabecalho-lista, .linha { display: flex; align-items: center; }
-.cabecalho-lista { font-size: 24px; font-weight: 500; margin-bottom: 12px; padding: 0 28px; }
-.cabecalho-lista .icone { margin-left: auto; }
-.col-nome { width: 280px; }
-.col-cpf { width: 260px; }
-.linha { background: var(--cinza-linha); color: var(--preto); border-radius: 6px; height: 58px; padding: 0 28px; margin-bottom: 16px; font-size: 24px; font-weight: 500; }
-.acoes { margin-left: auto; display: flex; gap: 10px; }
-.vazio { text-align: center; padding: 20px 0; }
-.rodape-painel { display: flex; justify-content: flex-end; margin-top: 24px; }
-
-/* ===== ÍCONES E BOTÕES ===== */
-.icone { background: none; border: none; padding: 0; cursor: pointer; width: 36px; height: 36px; }
-.icone svg { width: 100%; height: 100%; fill: currentColor; }
-.icone.branco { color: var(--branco); width: 30px; height: 30px; }
-.icone.preto { color: var(--preto); }
-.icone.vermelho { color: var(--vermelho); }
-.botao-dourado { background: var(--dourado); color: var(--branco); border: none; font-family: inherit; font-weight: 500; cursor: pointer; }
-.botao-contorno { background: transparent; color: var(--dourado); border: 1px solid var(--dourado); font-family: inherit; font-weight: 500; cursor: pointer; }
-.quadrado { width: 170px; padding: 12px 16px; border-radius: 14px; font-size: 17px; line-height: 1.2; }
-.pilula { padding: 6px 20px; border-radius: 999px; font-size: 18px; }
-
-/* ===== JANELAS (MODAIS) ===== */
-.fundo-modal { position: fixed; inset: 0; background: rgba(0,0,0,.65); display: flex; align-items: center; justify-content: center; padding: 16px; z-index: 10; font-family: 'Ubuntu', Arial, sans-serif; color: var(--branco); }
-.cartao h2 { margin: 0 0 14px; font-size: 22px; font-weight: 500; text-align: center; }
-.cartao label { display: block; font-size: 17px; font-weight: 500; margin: 10px 0 4px; }
-.cartao input { display: block; width: 100%; height: 38px; padding: 0 10px; background: var(--cinza-input); color: var(--branco); border: 2px solid transparent; border-radius: 6px; font-family: inherit; font-size: 16px; }
-.cartao input:focus { outline: none; border-color: var(--dourado); }
-.direita { display: flex; justify-content: flex-end; margin-top: 16px; }
-
-.cartao.registrar { width: 100%; max-width: 380px; padding: 22px 36px 26px; background: var(--grafite); border: 1px solid var(--dourado); border-radius: 22px; box-shadow: 0 0 14px rgba(212,175,55,.35); }
-.cartao.alterar { width: 100%; max-width: 420px; padding: 26px 48px 28px; background: var(--preto); border-radius: 40px; }
-.cartao.excluir { width: 100%; max-width: 480px; padding: 40px 40px 56px; background: var(--preto); border-radius: 42px; }
-.cartao.excluir h2 { margin-bottom: 40px; }
-.botoes-excluir { display: flex; justify-content: space-around; }
-.botoes-excluir .pilula { min-width: 120px; }
-.mensagem-erro { background-color: #171717; color: #e53935; border: 1px solid #d4af37; border-radius: 8px; padding: 12px 16px; margin: 15px 0; text-align: center; font-weight: 600;
+h1 {
+  text-align: center;
+  font-size: 28px;
+  font-weight: 500;
+  margin: 0 0 18px;
 }
 
-/* ===== CELULAR ===== */
+.painel {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 36px 56px 40px;
+  border: 1px solid var(--dourado);
+  border-radius: 22px;
+  background: rgba(20, 20, 20, 0.72);
+  box-shadow: 0 0 12px rgba(212, 175, 55, 0.25);
+}
+
+.cabecalho-lista,
+.linha {
+  display: flex;
+  align-items: center;
+}
+
+.cabecalho-lista {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 12px;
+  padding: 0 28px;
+}
+
+.cabecalho-lista .icone {
+  margin-left: auto;
+}
+
+.col-nome {
+  width: 280px;
+}
+
+.col-cpf {
+  width: 260px;
+}
+
+.linha {
+  background: var(--cinza-linha);
+  color: var(--preto);
+  border-radius: 6px;
+  min-height: 58px;
+  padding: 0 28px;
+  margin-bottom: 16px;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.acoes {
+  margin-left: auto;
+  display: flex;
+  gap: 10px;
+}
+
+.vazio {
+  text-align: center;
+  padding: 20px 0;
+}
+
+.rodape-painel {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 24px;
+}
+
+.icone {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+}
+
+.icone svg {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}
+
+.icone.branco {
+  color: var(--branco);
+  width: 30px;
+  height: 30px;
+}
+
+.icone.preto {
+  color: var(--preto);
+}
+
+.icone.vermelho {
+  color: var(--vermelho);
+}
+
+.botao-dourado {
+  background: var(--dourado);
+  color: var(--branco);
+  border: none;
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.botao-contorno {
+  background: transparent;
+  color: var(--dourado);
+  border: 1px solid var(--dourado);
+  font-family: inherit;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.quadrado {
+  width: 170px;
+  padding: 12px 16px;
+  border-radius: 14px;
+  font-size: 17px;
+  line-height: 1.2;
+}
+
+.pilula {
+  padding: 6px 20px;
+  border-radius: 999px;
+  font-size: 18px;
+}
+
+.fundo-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.65);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  z-index: 10;
+  font-family: 'Ubuntu', Arial, sans-serif;
+  color: var(--branco);
+}
+
+.cartao h2 {
+  margin: 0 0 14px;
+  font-size: 22px;
+  font-weight: 500;
+  text-align: center;
+}
+
+.cartao label {
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  margin: 10px 0 4px;
+}
+
+.cartao input {
+  display: block;
+  width: 100%;
+  height: 38px;
+  padding: 0 10px;
+  background: var(--cinza-input);
+  color: var(--branco);
+  border: 2px solid transparent;
+  border-radius: 6px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.cartao input:focus {
+  outline: none;
+  border-color: var(--dourado);
+}
+
+.direita {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.cartao.registrar {
+  width: 100%;
+  max-width: 380px;
+  padding: 22px 36px 26px;
+  background: var(--grafite);
+  border: 1px solid var(--dourado);
+  border-radius: 22px;
+  box-shadow: 0 0 14px rgba(212, 175, 55, 0.35);
+}
+
+.cartao.alterar {
+  width: 100%;
+  max-width: 420px;
+  padding: 26px 48px 28px;
+  background: var(--preto);
+  border-radius: 40px;
+}
+
+.cartao.excluir {
+  width: 100%;
+  max-width: 480px;
+  padding: 40px 40px 56px;
+  background: var(--preto);
+  border-radius: 42px;
+}
+
+.cartao.excluir h2 {
+  margin-bottom: 40px;
+}
+
+.botoes-excluir {
+  display: flex;
+  justify-content: space-around;
+}
+
+.botoes-excluir .pilula {
+  min-width: 120px;
+}
+
 @media (max-width: 700px) {
-  .conteudo { padding: 12px 12px 24px; }
-  .painel { padding: 16px; }
-  .col-nome, .col-cpf { width: 90px; }
-  .linha, .cabecalho-lista { font-size: 16px; padding: 0 12px; height: auto; min-height: 46px; }
+  .conteudo {
+    padding: 12px 12px 24px;
+  }
+
+  .painel {
+    padding: 16px;
+  }
+
+  .col-nome,
+  .col-cpf {
+    width: 90px;
+  }
+
+  .linha,
+  .cabecalho-lista {
+    font-size: 16px;
+    padding: 0 12px;
+    height: auto;
+    min-height: 46px;
+  }
 }
