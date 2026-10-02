@@ -7,7 +7,7 @@ export class ClienteService {
   private clientes: Cliente[] = [
     { id: 1, nome: 'Nilton', cpf: '001', email: 'nilton@email.com', senha: '123' },
     { id: 2, nome: 'Naldo',  cpf: '002', email: 'naldo@email.com',  senha: '123' },
-    { id: 3, nome: 'Noia',   cpf: '003', email: 'noia@email.com',   senha: '123' },
+    { id: 3, nome: 'Arthur',   cpf: '003', email: 'arthur@email.com',   senha: '123' },
   ];
   private proximoId = 4;
 
