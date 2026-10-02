@@ -1,11 +1,65 @@
 <main>
     <section id="caixaRegistro">
-        <p>Performance, elegância e confiança em um só lugar.</p>
-        <button>Registre-se</button>
+        <div class="container">
+            <p>Performance, elegância e confiança em um só lugar.</p>
+            <button><a [routerLink]="">Registre-se</a></button>
+        </div>
+        <div class="cardPromocao">
+            <div class="cardPromocao">
+
+                <h2>Promoção do dia</h2>
+
+                <div class="conteudoCard">
+
+                    <img src="https://img.odcdn.com.br/wp-content/uploads/2023/05/2023-fiat-topolino.jpg" alt="BMW i320">
+
+                    <div class="informacoes">
+                        <h3>BMW i320</h3>
+                        <p>4.0 Turbo Flex</p>
+                        <p>ANO xxxx</p>
+                    </div>
+
+                    <div class="parteInferior">
+                        <strong>R$XXXX,XX</strong>
+                        <button>Compre agora</button>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
     </section>
 
     <section>
         <h1>Descubra qual sera seu proximo sonho</h1>
         <h2>Catalogo da loja</h2>
-    </section>    
+
+         <div class="cards">
+
+        @for (carro of carros; track carro.nome) {
+
+            <div class="card">
+
+                <img [src]="carro.imagem" [alt]="carro.nome">
+
+                <h2>{{ carro.nome }}</h2>
+
+                <p>{{ carro.motor }}</p>
+
+                <div class="detalhes">
+                    <span>{{ carro.ano }}</span>
+                    <span>{{ carro.km }}</span>
+                </div>
+
+                <strong>{{ carro.preco }}</strong>
+
+                <button>Adicionar ao carrinho</button>
+
+            </div>
+
+        }
+    </div>
+
+
+    </section>
 </main>
