@@ -27,6 +27,7 @@ export class CadastroCliente {
   };
 
   confirmaSenha = '';
+  mensagemErro = '';
 
   constructor() {
     this.carregar();
@@ -51,12 +52,14 @@ export class CadastroCliente {
   abrirRegistrar(): void {
     this.cliente = this.clienteVazio();
     this.confirmaSenha = '';
+    this.mensagemErro = '';
     this.modal = 'registrar';
   }
 
   abrirAlterar(c: Cliente): void {
     this.cliente = { ...c };
     this.confirmaSenha = c.senha;
+    this.mensagemErro = '';
     this.modal = 'alterar';
   }
 
@@ -67,19 +70,46 @@ export class CadastroCliente {
 
   fechar(): void {
     this.modal = null;
+    this.mensagemErro = '';
   }
 
-  // INCLUSÃO e ALTERAÇÃO
   salvar(): void {
     const c = this.cliente;
 
+    this.mensagemErro = '';
+
     if (!c.nome || !c.cpf || !c.email || !c.senha) {
-      alert('Preencha todos os campos.');
+      this.mensagemErro = 'Preencha todos os campos.';
+      return;
+    }
+
+    if (c.senha.length < 6) {
+      this.mensagemErro = 'A senha deve ter pelo menos 6 caracteres.';
       return;
     }
 
     if (c.senha !== this.confirmaSenha) {
-      alert('As senhas não são iguais.');
+      this.mensagemErro = 'As senhas não são iguais.';
+      return;
+    }
+
+    const clientes = this.service.listar();
+
+    const cpfExistente = clientes.some(cliente =>
+      cliente.cpf === c.cpf && cliente.id !== c.id
+    );
+
+    if (cpfExistente) {
+      this.mensagemErro = 'Este CPF já está cadastrado.';
+      return;
+    }
+
+    const emailExistente = clientes.some(cliente =>
+      cliente.email === c.email && cliente.id !== c.id
+    );
+
+    if (emailExistente) {
+      this.mensagemErro = 'Este e-mail já está cadastrado.';
       return;
     }
 

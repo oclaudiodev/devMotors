@@ -59,6 +59,8 @@ h1 { text-align: center; font-size: 28px; font-weight: 500; margin: 0 0 18px; }
 .cartao.excluir h2 { margin-bottom: 40px; }
 .botoes-excluir { display: flex; justify-content: space-around; }
 .botoes-excluir .pilula { min-width: 120px; }
+.mensagem-erro { background-color: #171717; color: #e53935; border: 1px solid #d4af37; border-radius: 8px; padding: 12px 16px; margin: 15px 0; text-align: center; font-weight: 600;
+}
 
 /* ===== CELULAR ===== */
 @media (max-width: 700px) {
