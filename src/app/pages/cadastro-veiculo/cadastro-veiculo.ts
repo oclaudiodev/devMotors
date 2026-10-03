@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Veiculo } from '../models/veiculo.model';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-veiculo',
   standalone: true,
-  imports: [],
+  imports: [RouterLink],
   templateUrl: './cadastro-veiculo.html',
   styleUrl: './cadastro-veiculo.css'
 })

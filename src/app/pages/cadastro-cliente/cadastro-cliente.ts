@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
+import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-cadastro-cliente', 
   standalone: true, 
-  imports: [], 
+  imports: [RouterLink], 
   templateUrl: './cadastro-cliente.html', 
   styleUrl: './cadastro-cliente.css'
 })
