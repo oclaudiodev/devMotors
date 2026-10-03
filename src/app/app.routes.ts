@@ -5,6 +5,7 @@ import { CadastroVeiculo } from './pages/cadastro-veiculo/cadastro-veiculo';
 import { Login } from './pages/login/login';
 import { Registro } from './pages/registro/registro';
 import { CadastroCliente } from './pages/cadastro-cliente/cadastro-cliente';
+import { PgAdmin } from './pages/pg-admin/pg-admin';
 
 
 export const routes: Routes = [
