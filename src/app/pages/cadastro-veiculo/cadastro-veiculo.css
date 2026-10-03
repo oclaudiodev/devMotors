@@ -302,3 +302,45 @@
   font-weight: 700;
   cursor: pointer;
 }
+
+
+ .voltar {
+  display: inline-flex;
+  align-items: center;
+  align-self: flex-start;
+  width: fit-content;
+  gap: 10px;
+  box-sizing: border-box;
+  margin-bottom: 16px;
+  padding: 10px 22px;
+  border: 1.5px solid #e8b52e;
+  border-radius: 999px;
+  color: #e8b52e;
+  font-family: "Cabin", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+  text-decoration: none;
+  transition: background .2s ease, color .2s ease;
+}
+
+
+.voltar svg {
+  width: 20px;
+  height: 20px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .2s ease;
+}
+
+.voltar:hover,
+.voltar:focus-visible {
+  background: #e8b52e;
+  color: #0b0b0b;
+  outline: none;
+}
+
+.voltar:hover svg { transform: translateX(-4px); }
