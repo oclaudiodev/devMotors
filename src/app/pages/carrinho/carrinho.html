@@ -34,7 +34,13 @@
                 <td>R$ 50.000,00</td>
 
                 <td>
-                    <button class="excluir">Excluir</button>
+                    <button type="button"class="excluir"(click)="abrirModalExcluir()">
+                        <img 
+                            src="images/lixeira.png" 
+                            alt="Excluir" 
+                            class="icone-btn"
+                        />
+                    </button>
                 </td>
             </tr>
             <tr>
@@ -53,7 +59,13 @@
                 <td>R$ 50.000,00</td>
 
                 <td>
-                    <button class="excluir">Excluir</button>
+                    <button type="button"class="excluir"(click)="abrirModalExcluir()">
+                        <img 
+                            src="images/lixeira.png" 
+                            alt="Excluir" 
+                            class="icone-btn"
+                        />
+                    </button>
                 </td>
             </tr>
             <tr>
@@ -72,7 +84,13 @@
                 <td>R$ 50.000,00</td>
 
                 <td>
-                    <button class="excluir">Excluir</button>
+                    <button type="button"class="excluir"(click)="abrirModalExcluir()">
+                        <img 
+                            src="images/lixeira.png" 
+                            alt="Excluir" 
+                            class="icone-btn"
+                        />
+                    </button>
                 </td>
             </tr>
         </tbody>
@@ -94,5 +112,38 @@
             Comprar
         </button>
     </div>
+
+    @if (exibirModalExcluir) {
+    <div class="modal-overlay">
+        <div class="modal-card modal-excluir">
+
+            <h2>EXCLUIR CARRO</h2>
+
+            <p class="subtitulo-modal">
+                Confirmar Exclusão
+            </p>
+
+            <div class="botoes-confirmacao">
+
+                <button 
+                    type="button" 
+                    class="btn-nao"
+                    (click)="fecharModal()">
+                    Não
+                </button>
+
+                <button 
+                    type="button" 
+                    class="btn-sim"
+                    (click)="fecharModal()">
+                    Sim
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+    }
+
 
 </div>

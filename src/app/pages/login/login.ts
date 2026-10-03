@@ -24,14 +24,22 @@ export class Login {
   }
   //Verifico se o usuário e senha são válidos
   fazerLogin() {
-    if (this.login === 'devmotors@email.com' && this.senha === '777') {
+    if (this.login === 'adm@gmail.com' && this.senha === '123') {
+      alert('Bem-vindo, administrador!');
+      this.router.navigate(['/admin']);
+      return;
+    }
+
+    if (this.login.trim() !== '' && this.senha.trim() !== '') {
       alert(`Bem-vindo ${this.login}!`);
       this.router.navigate(['/']);
-    } else {
-      alert('Dados inválidos');
+      return;
     }
+
+    alert('Dados inválidos');
   }
   irParaRegistro() {
     this.router.navigate(['/registro']);
   }
+
 }

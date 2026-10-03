@@ -120,6 +120,7 @@
 }
 
 .btn-registrar:hover {
+  filter: brightness(1.1);
   background-color: #b8952b;
 }
 

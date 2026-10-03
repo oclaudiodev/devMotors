@@ -6,4 +6,16 @@ import { Component } from '@angular/core';
   styleUrl: './carrinho.css',
   templateUrl: './carrinho.html',
 })
-export class Carrinho {}
+export class Carrinho {
+
+  exibirModalExcluir = false;
+
+  abrirModalExcluir() {
+    this.exibirModalExcluir = true;
+  }
+
+  fecharModal() {
+    this.exibirModalExcluir = false;
+  }
+
+}
