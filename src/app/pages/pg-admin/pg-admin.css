@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
+
+:host {
+  --gold: #e8b52e;
+  --card-bg: rgba(14, 14, 14, 0.85);
+  --text: #ffffff;
+  --muted: #e6e6e6;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 32px 16px;
+  color: var(--text);
+  font-family: "Cabin", system-ui, -apple-system, "Segoe UI", Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
+  width: 100%;
+  max-width: 840px;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  padding: 40px 28px 30px;
+  min-height: 290px;
+  background: var(--card-bg);
+  border: 1.5px solid var(--gold);
+  border-radius: 22px;
+  color: inherit;
+  text-decoration: none;
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.card:hover,
+.card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: 0 10px 30px rgba(232, 181, 46, 0.22);
+  background: rgba(24, 20, 10, 0.92);
+  outline: none;
+}
+
+.icon {
+  width: 84px;
+  height: 84px;
+  margin-bottom: 18px;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2.2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.card h2 {
+  margin: 0 0 12px;
+  font-size: 26px;
+  font-weight: 700;
+}
+
+.card p {
+  margin: 0;
+  max-width: 240px;
+  font-size: 17px;
+  line-height: 1.4;
+  color: var(--muted);
+}
+
+.arrow {
+  margin-top: auto;
+  padding-top: 22px;
+  width: 30px;
+  height: 30px;
+  box-sizing: content-box;
+  stroke: var(--gold);
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+  transition: transform .2s ease;
+}
+
+.card:hover .arrow { transform: translateX(6px); }
+
+@media (max-width: 640px) {
+  .cards { grid-template-columns: 1fr; }
+}

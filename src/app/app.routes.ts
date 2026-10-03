@@ -6,12 +6,14 @@ import { Login } from './pages/login/login';
 import { Registro } from './pages/registro/registro';
 import { CadastroCliente } from './pages/cadastro-cliente/cadastro-cliente';
 
+
 export const routes: Routes = [
   { path: '', component: LadingPage },
   { path: 'carrinho', component: Carrinho },
   { path: 'login', component: Login },
   { path: 'cadastro-veiculo', component: CadastroVeiculo },
   { path: 'registro', component: Registro },
+  { path: 'admin', component: PgAdmin },
   { path: 'cadastro-cliente', component: CadastroCliente }
 ];
 
