@@ -4,39 +4,42 @@
 
         <div class="login-card">
 
-            <!-- Lado Esquerdo: Formulário de Login -->
             <div class="login-form-side">
                 
 
                     <div class="input-group">
                         <label for="email">Email</label>
-                        <input type="email" id="email"  name="login"
+                        <input type="email"
+                            id="email"
+                            name="login"
+                            [(ngModel)]="login"
+                            (input)="validarFormulario()"
                             required>
                     </div>
 
                     <div class="input-group">
                         <label for="senha">Senha</label>
                         <input type="password" id="senha" name="senha"
+                            [(ngModel)]="senha"
+                            (input)="validarFormulario()"
                             required>
                         <a href="#" class="forgot-password">esqueceu a senha?</a>
                     </div>
 
                     <div class="login-actions">
-                        <button type="submit" class="btn-login" [disabled]="botaoDesabilitado">
+                        <button type="submit" class="btn-login" [disabled]="botaoDesabilitado" (click)="fazerLogin()">
                             Login
                         </button>
                         <button type="button" class="btn-google">
-                            <span class="google-icon">G</span>
+                            <img class="google-icon" src="images/google.jpg" alt="Google">
                         </button>
                     </div>
 
                 
             </div>
 
-            <!-- Divisor Central -->
             <div class="card-divider"></div>
 
-            <!-- Lado Direito: Boas-vindas e Cadastro -->
             <div class="register-side">
                 <h2>BEM VINDO A MELHOR PAGINA DE VENDA DE CARROS</h2>
                 <div class="register-prompt">
@@ -44,7 +47,7 @@
                     <button type="button" class="btn-cadastrar"(click)="irParaRegistro()">Cadastrar</button>
                 </div>
                 <div class="google-icon-wrapper">
-                    <span class="google-icon">G</span>
+                    <img class="google-icon" src="images/google.jpg" alt="Google">
                 </div>
             </div>
 

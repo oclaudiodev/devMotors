@@ -118,9 +118,6 @@ h1 {
   color: var(--preto);
 }
 
-.icone.vermelho {
-  color: var(--vermelho);
-}
 
 .botao-dourado {
   background: var(--dourado);
@@ -265,4 +262,9 @@ h1 {
     height: auto;
     min-height: 46px;
   }
+}
+
+.icone-btn {
+  width: 22px;
+  height: 22px;
 }

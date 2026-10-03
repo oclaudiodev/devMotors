@@ -4,9 +4,13 @@
         <div class="navbar-esquerda">
             <ul class="navbar-list">
                 @for(item of itensMenu; track item){
-                    <li class="navbar-item">
-                        <a [routerLink]="item.link">{{item.label}}</a>
-                    </li>
+                @if(item.label === 'Veículos') { 
+                    <a href="#veiculos"> {{ item.label }} </a> 
+                } 
+                @else { <a
+                    [routerLink]="item.link"> 
+                    {{ item.label }} 
+                    </a> }
                 }
             </ul>
         </div>

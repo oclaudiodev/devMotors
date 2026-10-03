@@ -1,4 +1,3 @@
-/* Configurações Gerais e Fundo Escuro */
 * {
     margin: 0;
     padding: 0;
@@ -15,7 +14,7 @@
     padding: 20px;
 }
 
-/* Container do Card Centralizado */
+
 .login-card-container {
     width: 100%;
     max-width: 750px;
@@ -42,7 +41,6 @@
     position: relative;
 }
 
-/* Lado Esquerdo (Formulário) */
 .login-form-side {
     flex: 1;
     padding-right: 30px;
@@ -133,16 +131,16 @@
     color: #4285F4;
     font-weight: bold;
     font-size: 16px;
+    height: 20px;
 }
 
-/* Divisor Vertical */
+
 .card-divider {
     width: 1px;
     background-color: #e5c158;
     margin: 0 20px;
 }
 
-/* Lado Direito (Cadastro / Boas-vindas) */
 .register-side {
     flex: 1;
     padding-left: 20px;

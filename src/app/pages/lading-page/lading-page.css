@@ -54,13 +54,17 @@
     color: white;
 }
 
+section > .cardPromocao{
+    margin: 50px;
+}
+
 .conteudoCard {
     width: 555px;
     height: 200px;
     background-color: #666;
     border: 1px solid #e6b928;
     border-radius: 15px;
-
+    
     display: flex;
     flex-wrap: wrap;
 }
@@ -189,4 +193,228 @@ h2{
 
     font-size: 16px;
     font-weight: bold;
+}
+
+@media (max-width: 1024px) {
+
+    #caixaRegistro {
+        flex-direction: column;
+        align-items: center;
+        gap: 50px;
+        margin-top: 60px;
+        margin-bottom: 80px;
+    }
+
+    .container p {
+        width: 80%;
+        font-size: 40px;
+    }
+
+    .cardPromocao {
+        width: 90%;
+        max-width: 600px;
+    }
+
+    .conteudoCard {
+        width: 92%;
+    }
+
+    h1 {
+        width: 80%;
+        height: auto;
+        padding: 30px 20px;
+        font-size: 50px;
+    }
+
+    h2 {
+        font-size: 45px;
+        margin: 120px 20px 60px;
+    }
+
+    .cards {
+        width: 90%;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 30px;
+    }
+
+    .card {
+        width: 350px;
+    }
+}
+
+
+
+@media (max-width: 600px) {
+
+    #caixaRegistro {
+        flex-direction: column;
+        align-items: center;
+        gap: 40px;
+        margin-top: 40px;
+        margin-bottom: 60px;
+        padding: 0 15px;
+    }
+
+    .container {
+        width: 100%;
+    }
+
+    .container p {
+        width: 100%;
+        font-size: 32px;
+        line-height: 1.2;
+    }
+
+    .container button {
+        width: 200px;
+        height: 40px;
+        font-size: 18px;
+    }
+
+
+    .cardPromocao {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        padding: 10px;
+    }
+
+    .cardPromocao h2 {
+        font-size: 25px;
+        margin: 5px 0 15px;
+    }
+
+    .conteudoCard {
+        width: 100%;
+        height: auto;
+        padding: 10px;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        align-items: center;
+    }
+
+    .conteudoCard img {
+        width: 100%;
+        height: 160px;
+    }
+
+    .informacoes {
+        width: 100%;
+        padding-left: 0;
+        text-align: center;
+    }
+
+    .informacoes h3,
+    .informacoes p {
+        margin: 5px;
+    }
+
+    .informacoes h3 {
+        font-size: 22px;
+    }
+
+    .informacoes p {
+        font-size: 15px;
+    }
+
+    .parteInferior {
+        margin-top: 15px;
+        gap: 10px;
+    }
+
+    .parteInferior strong {
+        font-size: 20px;
+    }
+
+    .parteInferior button {
+        padding: 8px 12px;
+        font-size: 13px;
+    }
+
+
+    h1 {
+        width: calc(100% - 30px);
+        height: auto;
+        padding: 25px 15px;
+        font-size: 34px;
+        line-height: 1.15;
+    }
+
+
+    h2 {
+        font-size: 35px;
+        margin: 80px 15px 40px;
+    }
+
+
+    .cards {
+        width: calc(100% - 30px);
+        padding: 15px;
+        margin: 30px auto;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+
+
+    .card {
+        width: 100%;
+        max-width: 350px;
+        height: 430px;
+    }
+
+    .card img {
+        height: 160px;
+    }
+
+    .card h2 {
+        font-size: 28px;
+        margin: 10px;
+    }
+
+    .card p {
+        font-size: 15px;
+    }
+
+    .detalhes {
+        margin: 12px 10px;
+    }
+
+    .card strong {
+        font-size: 20px;
+    }
+
+    .card button {
+        font-size: 15px;
+    }
+}
+
+
+@media (max-width: 380px) {
+
+    .container p {
+        font-size: 28px;
+    }
+
+    .cardPromocao {
+        padding: 8px;
+    }
+
+    .conteudoCard img {
+        height: 140px;
+    }
+
+    h1 {
+        font-size: 29px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+
+    .card {
+        height: 410px;
+    }
 }
