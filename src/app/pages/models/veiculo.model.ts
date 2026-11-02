@@ -1,4 +1,5 @@
 export class Veiculo {
+  id?: string;
   marca: string;
   modelo: string;
   estoque: number;

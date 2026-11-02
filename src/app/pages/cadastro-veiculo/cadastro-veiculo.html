@@ -15,14 +15,14 @@
       <span class="coluna-estoque">Estoque</span>
       <span class="coluna-valor">Valor</span>
       <div class="coluna-acoes">
-        <button type="button" class="btn-atualizar" title="Atualizar dados">
+        <button type="button" class="btn-atualizar" (click)="carregarLista()" title="Atualizar dados">
           <img src="images/refresh.png" alt="Atualizar" class="icone-btn" />
         </button>
       </div>
     </header>
 
     <ul class="lista-carros">
-      @for (carro of listaVeiculos; track carro) {
+      @for (carro of listaVeiculos; track carro.id) {
         <li class="linha-carro">
           <div class="coluna-foto">
             <img [src]="carro.imagem" [alt]="carro.modelo" class="img-carro-thumb" />
@@ -36,7 +36,7 @@
             <button type="button" class="btn-editar" (click)="abrirFormularioEditar(carro)" title="Editar">
               <img src="images/edit.png" alt="Editar" class="icone-btn" />
             </button>
-            <button type="button" class="btn-excluir" (click)="abrirModalExcluir()" title="Excluir">
+            <button type="button" class="btn-excluir" (click)="abrirModalExcluir(carro)" title="Excluir">
               <img src="images/lixeira.png" alt="Excluir" class="icone-btn" />
             </button>
           </div>
@@ -59,39 +59,39 @@
           <div class="campo-duplo">
             <div class="campo">
               <label for="marca">Marca</label>
-              <input id="marca" name="marca" type="text" [value]="modoEdicao ? carroEmEdicao.marca : ''" placeholder="Ex: BYD" />
+              <input id="marca" name="marca" type="text" [(ngModel)]="veiculoForm.marca" placeholder="Ex: BYD" />
             </div>
             <div class="campo">
               <label for="modelo">Modelo</label>
-              <input id="modelo" name="modelo" type="text" [value]="modoEdicao ? carroEmEdicao.modelo : ''" placeholder="Ex: King" />
+              <input id="modelo" name="modelo" type="text" [(ngModel)]="veiculoForm.modelo" placeholder="Ex: King" />
             </div>
           </div>
 
           <div class="campo-duplo">
             <div class="campo">
               <label for="ano">Ano</label>
-              <input id="ano" name="ano" type="number" [value]="modoEdicao ? carroEmEdicao.ano : ''" placeholder="2025" />
+              <input id="ano" name="ano" type="number" [(ngModel)]="veiculoForm.ano" placeholder="2025" />
             </div>
             <div class="campo">
               <label for="estoque">Estoque</label>
-              <input id="estoque" name="estoque" type="number" [value]="modoEdicao ? carroEmEdicao.estoque : ''" placeholder="1" />
+              <input id="estoque" name="estoque" type="number" [(ngModel)]="veiculoForm.estoque" placeholder="1" />
             </div>
           </div>
 
           <div class="campo-duplo">
             <div class="campo">
               <label for="valor">Preço</label>
-              <input id="valor" name="valor" type="number" [value]="modoEdicao ? carroEmEdicao.valor : ''" placeholder="175000" />
+              <input id="valor" name="valor" type="number" [(ngModel)]="veiculoForm.valor" placeholder="175000" />
             </div>
             <div class="campo">
               <label for="km">KMs</label>
-              <input id="km" name="km" type="number" [value]="modoEdicao ? carroEmEdicao.quilometragem : ''" placeholder="0" />
+              <input id="km" name="km" type="number" [(ngModel)]="veiculoForm.quilometragem" placeholder="0" />
             </div>
           </div>
 
           <div class="campo-imagem">
             <label for="imagem">Caminho/URL da Imagem</label>
-            <input id="imagem" name="imagem" type="text" [value]="modoEdicao ? carroEmEdicao.imagem : ''" placeholder="images/byd-king.png" />
+            <input id="imagem" name="imagem" type="text" [(ngModel)]="veiculoForm.imagem" placeholder="images/byd-king.png" />
 
             <div class="upload-box">
               <label for="file-upload" class="btn-upload">
@@ -103,7 +103,7 @@
 
           <div class="acoes-form">
             <button type="button" class="btn-cancelar" (click)="fecharModal()">Cancelar</button>
-            <button type="button" class="btn-salvar" (click)="fecharModal()">
+            <button type="button" class="btn-salvar" (click)="salvar()">
               {{ modoEdicao ? 'Alterar' : 'ADICIONAR CARRO' }}
             </button>
           </div>
@@ -111,7 +111,7 @@
       </div>
     </div>
   }
-  
+
   @if (exibirModalExcluir) {
     <div class="modal-overlay">
       <div class="modal-card modal-excluir">
@@ -120,7 +120,7 @@
 
         <div class="botoes-confirmacao">
           <button type="button" class="btn-nao" (click)="fecharModal()">Não</button>
-          <button type="button" class="btn-sim" (click)="fecharModal()">Sim</button>
+          <button type="button" class="btn-sim" (click)="confirmarExclusao()">Sim</button>
         </div>
       </div>
     </div>
