@@ -1,0 +1,85 @@
+{
+  "veiculos": [
+    {
+      "id": "1",
+      "marca": "BYD",
+      "modelo": "King",
+      "estoque": 1,
+      "quilometragem": 0,
+      "imagem": "images/byd-king.png",
+      "valor": 175000,
+      "ano": 2025
+    },
+    {
+      "id": "2",
+      "marca": "Toyota",
+      "modelo": "Corolla Cross",
+      "estoque": 1,
+      "quilometragem": 80000,
+      "imagem": "images/corolla-cross.png",
+      "valor": 125000,
+      "ano": 2022
+    },
+    {
+      "id": "3",
+      "marca": "Jeep",
+      "modelo": "Renegade",
+      "estoque": 1,
+      "quilometragem": 94000,
+      "imagem": "images/jeep-renegade.png",
+      "valor": 93500,
+      "ano": 2021
+    },
+    {
+      "id": "4",
+      "marca": "Honda",
+      "modelo": "Civic",
+      "estoque": 1,
+      "quilometragem": 104000,
+      "imagem": "images/honda-civic.png",
+      "valor": 115000,
+      "ano": 2021
+    },
+    {
+      "id": "5",
+      "marca": "Fiat",
+      "modelo": "Fastback",
+      "estoque": 1,
+      "quilometragem": 42000,
+      "imagem": "images/fiat-fastback.png",
+      "valor": 12000,
+      "ano": 2025
+    },
+    {
+      "id": "6",
+      "marca": "Honda",
+      "modelo": "HR-V",
+      "estoque": 1,
+      "quilometragem": 92000,
+      "imagem": "images/honda-hr-v.png",
+      "valor": 134900,
+      "ano": 2024
+    },
+    {
+      "id": "7",
+      "marca": "Hyundai",
+      "modelo": "Creta",
+      "estoque": 1,
+      "quilometragem": 13000,
+      "imagem": "images/hyundai-creta.png",
+      "valor": 165500,
+      "ano": 2025
+    },
+    {
+      "id": "8",
+      "marca": "BYD",
+      "modelo": "Song Pro",
+      "estoque": 1,
+      "quilometragem": 0,
+      "imagem": "images/byd-songpro.png",
+      "valor": 204900,
+      "ano": 2026
+    }
+  ],
+  "$schema": "./node_modules/json-server/schema.json"
+}
