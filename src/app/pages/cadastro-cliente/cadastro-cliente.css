@@ -306,3 +306,9 @@ h1 {
 }
 
 .voltar:hover svg { transform: translateX(-4px); }
+.nome-excluir {
+  margin: -24px 0 32px;
+  text-align: center;
+  font-size: 18px;
+  color: var(--dourado);
+}

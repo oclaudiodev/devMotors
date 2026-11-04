@@ -81,5 +81,28 @@
       "ano": 2026
     }
   ],
+  "clientes": [
+    {
+      "id": "1",
+      "nome": "João Martins da Silva",
+      "cpf": "123.456.789-00",
+      "email": "joao@email.com",
+      "senha": "123"
+    },
+    {
+      "id": "2",
+      "nome": "Mariana Oliveira Santos",
+      "cpf": "987.654.321-00",
+      "email": "mariana@email.com",
+      "senha": "123"
+    },
+    {
+      "id": "3",
+      "nome": "Lucas Ferreira Costa",
+      "cpf": "456.789.123-00",
+      "email": "lucas@email.com",
+      "senha": "123"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
