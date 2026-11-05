@@ -1,4 +1,4 @@
-import { Component, ChangeDetectorRef, inject, OnInit } from '@angular/core';
+import { Component, OnInit, inject, ChangeDetectorRef } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 import { Cliente } from '../models/cliente.model';
@@ -12,129 +12,206 @@ import { ClienteService } from '../../services/cliente.service';
   styleUrl: './cadastro-cliente.css'
 })
 export class CadastroCliente implements OnInit {
+
   private service = inject(ClienteService);
   private cdr = inject(ChangeDetectorRef);
 
   listaClientes: Cliente[] = [];
 
-  // '' = nenhum modal aberto | 'cadastro' | 'editar' | 'excluir'
-  modal = '';
+  modal: '' | 'cadastro' | 'editar' | 'excluir' = '';
 
-  clienteForm: Cliente = {} as Cliente;
-  confirmarSenha: string = '';
+  mensagem = '';
 
-  clienteSelecionado: Cliente = {} as Cliente;
+  clienteForm: Cliente = new Cliente('', '', '', '');
+
+  confirmarSenha = '';
+
+  clienteSelecionado: Cliente = new Cliente('', '', '');
 
   ngOnInit(): void {
     this.carregarLista();
   }
 
-  carregarLista() {
+  carregarLista(): void {
     this.service.listar().subscribe({
       next: (clientes) => {
         this.listaClientes = clientes;
         this.cdr.detectChanges();
       },
       error: () => {
-        alert('Não foi possível carregar os clientes. Confira se a API está rodando.');
+        this.mensagem = 'Não foi possível carregar os clientes. Confira se a API está rodando.';
+        this.cdr.detectChanges();
       }
     });
   }
 
-  abrirCadastro() {
-    this.clienteForm = {} as Cliente;
+  atualizarLista(): void {
+    this.carregarLista();
+  }
+
+  formatarCpf(cpf: string): string {
+    const numeros = cpf.replace(/\D/g, '');
+
+    if (numeros.length !== 11) {
+      return cpf;
+    }
+
+    return numeros.substring(0, 3) + '.' +
+      numeros.substring(3, 6) + '.' +
+      numeros.substring(6, 9) + '-' +
+      numeros.substring(9, 11);
+  }
+
+  abrirCadastro(): void {
+    this.clienteForm = new Cliente('', '', '', '');
     this.confirmarSenha = '';
     this.modal = 'cadastro';
   }
 
-  abrirEditar(cliente: Cliente) {
-    // Copia os dados para o formulário, sem mexer na lista até salvar
-    this.clienteForm = new Cliente(cliente.nome, cliente.cpf, cliente.email, cliente.senha);
+  abrirEditar(cliente: Cliente): void {
+    this.clienteForm = new Cliente(
+      cliente.nome,
+      cliente.cpf,
+      cliente.email,
+      ''
+    );
+
     this.clienteForm.id = cliente.id;
-    this.confirmarSenha = cliente.senha ?? '';
+
+    this.clienteSelecionado = cliente;
+    this.confirmarSenha = '';
     this.modal = 'editar';
   }
 
-  abrirExcluir(cliente: Cliente) {
+  abrirExcluir(cliente: Cliente): void {
     this.clienteSelecionado = cliente;
     this.modal = 'excluir';
   }
 
-  // Valida os campos antes de enviar para a API
   validarFormulario(): boolean {
-    if (!this.clienteForm.nome || !this.clienteForm.cpf || !this.clienteForm.email) {
-      alert('Preencha nome, CPF e email.');
+
+    if (
+      !this.clienteForm.nome.trim() ||
+      !this.clienteForm.cpf.trim() ||
+      !this.clienteForm.email.trim()
+    ) {
+      this.mensagem = 'Preencha todos os campos.';
       return false;
     }
 
-    if (!this.clienteForm.senha) {
-      alert('Informe uma senha.');
+    if (this.modal === 'cadastro' && !this.clienteForm.senha) {
+      this.mensagem = 'Informe uma senha.';
       return false;
     }
 
-    if (this.clienteForm.senha !== this.confirmarSenha) {
-      alert('As senhas não são iguais.');
-      return false;
+    if (this.modal === 'editar' && this.clienteForm.senha) {
+      if (this.clienteForm.senha !== this.confirmarSenha) {
+        this.mensagem = 'As senhas não coincidem.';
+        return false;
+      }
+    }
+
+    if (this.modal === 'cadastro') {
+      if (this.clienteForm.senha !== this.confirmarSenha) {
+        this.mensagem = 'As senhas não coincidem.';
+        return false;
+      }
     }
 
     const cpfRepetido = this.listaClientes.some(
-      cliente => cliente.cpf === this.clienteForm.cpf && cliente.id !== this.clienteForm.id
+      cliente =>
+        cliente.cpf === this.clienteForm.cpf.trim() &&
+        cliente.id !== this.clienteForm.id
     );
+
     if (cpfRepetido) {
-      alert('Já existe um cliente cadastrado com esse CPF.');
+      this.mensagem = 'Já existe um cliente cadastrado com esse CPF.';
       return false;
     }
 
     return true;
   }
 
-  salvar() {
+  salvar(): void {
+
     if (!this.validarFormulario()) {
       return;
     }
 
+    const cliente = new Cliente(
+      this.clienteForm.nome.trim(),
+      this.clienteForm.cpf.trim(),
+      this.clienteForm.email.trim(),
+      this.clienteForm.senha
+    );
+
+    cliente.id = this.clienteForm.id;
+
     if (this.modal === 'editar') {
-      this.service.alterar(this.clienteForm).subscribe({
+
+      if (!cliente.senha) {
+        cliente.senha = this.clienteSelecionado.senha;
+      }
+
+      this.service.alterar(cliente).subscribe({
         next: () => {
-          alert('Cliente alterado com sucesso!');
+          this.fecharModal();
+          this.mensagem = 'Cliente alterado com sucesso!';
           this.carregarLista();
-          this.fecharModal();
         },
         error: () => {
-          alert('Não foi possível alterar o cliente.');
+          this.mensagem = 'Não foi possível alterar o cliente.';
         }
       });
+
     } else {
-      this.service.incluir(this.clienteForm).subscribe({
-        next: (cliente) => {
-          this.listaClientes.push(cliente);
-          alert(`Cliente ${cliente.nome} cadastrado com sucesso!`);
-          this.fecharModal();
-        },
-        error: () => {
-          alert('Não foi possível cadastrar o cliente.');
-        }
-      });
-    }
-  }
 
-  confirmarExclusao() {
-    const id = this.clienteSelecionado.id;
-    if (id !== undefined) {
-      this.service.excluir(id).subscribe({
+      this.service.incluir(cliente).subscribe({
         next: () => {
-          this.listaClientes = this.listaClientes.filter(cliente => cliente.id !== id);
           this.fecharModal();
+          this.mensagem = 'Cliente cadastrado com sucesso!';
+          this.carregarLista();
         },
         error: () => {
-          alert('Não foi possível excluir o cliente.');
+          this.mensagem = 'Não foi possível cadastrar o cliente.';
         }
       });
+
     }
   }
 
-  fecharModal() {
-    this.modal = '';
-    this.cdr.detectChanges();
+  confirmarExclusao(): void {
+
+    const id = this.clienteSelecionado.id;
+
+    if (!id) {
+      return;
+    }
+
+    this.service.excluir(id).subscribe({
+      next: () => {
+        this.fecharModal();
+        this.mensagem = 'Cliente excluído com sucesso!';
+        this.carregarLista();
+      },
+      error: () => {
+        this.mensagem = 'Não foi possível excluir o cliente.';
+      }
+    });
+
   }
+
+  excluirCliente(): void {
+    this.confirmarExclusao();
+  }
+
+  fecharModal(): void {
+    this.modal = '';
+    this.confirmarSenha = '';
+  }
+
+  fecharMensagem(): void {
+    this.mensagem = '';
+  }
+
 }

@@ -1,7 +1,7 @@
 <main class="conteudo">
 
   <a class="voltar" routerLink="/admin">
-    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M21 12H3M10 5l-7 7 7 7"/></svg>
+    <span>←</span>
     Voltar ao painel do administrador
   </a>
 
@@ -10,33 +10,28 @@
   <section class="painel">
 
     <div class="cabecalho-lista">
-
       <span class="col-nome">Nome</span>
       <span class="col-cpf">CPF</span>
 
-      <button type="button" class="icone branco" title="Atualizar" (click)="carregarLista()">
-        <svg viewBox="0 0 24 24">
-          <path
-            d="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 7.99 7.99 7.99c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" />
-        </svg>
+      <button type="button" class="icone branco" title="Atualizar" (click)="atualizarLista()">
+        <img src="images/refresh.png" alt="Atualizar" class="icone-btn"/>
       </button>
-
     </div>
 
     @for (cliente of listaClientes; track cliente.id) {
       <div class="linha">
 
         <span class="col-nome">{{ cliente.nome }}</span>
-        <span class="col-cpf">{{ cliente.cpf }}</span>
+        <span class="col-cpf">{{ formatarCpf(cliente.cpf) }}</span>
 
         <div class="acoes">
 
           <button type="button" class="icone preto" title="Editar" (click)="abrirEditar(cliente)">
-            <img src="images/edit.png" alt="Editar" class="icone-btn" />
+            <img src="images/edit.png" alt="Editar" class="icone-btn"/>
           </button>
 
           <button type="button" class="icone vermelho" title="Excluir" (click)="abrirExcluir(cliente)">
-            <img src="images/lixeira.png" alt="Excluir" class="icone-btn" />
+            <img src="images/lixeira.png" alt="Excluir" class="icone-btn"/>
           </button>
 
         </div>
@@ -61,70 +56,94 @@
 
 @if (modal === 'cadastro' || modal === 'editar') {
 
-<div class="fundo-modal" (click)="fecharModal()">
+  <div class="fundo-modal" (click)="fecharModal()">
 
-  <form class="cartao registrar" (click)="$event.stopPropagation()" (ngSubmit)="salvar()">
+    <form class="cartao registrar" (click)="$event.stopPropagation()" (ngSubmit)="salvar()">
 
-    <h2>{{ modal === 'editar' ? 'Dados do cliente' : 'Registrar Cliente' }}</h2>
+      <h2>{{ modal === 'editar' ? 'Dados do cliente' : 'Registrar Cliente' }}</h2>
 
-    <label for="nome">Nome</label>
-    <input id="nome" name="nome" type="text" placeholder="Nome completo"
-      [(ngModel)]="clienteForm.nome">
+      <label for="nome">Nome</label>
+      <input id="nome" name="nome" type="text" placeholder="Nome completo"
+        [(ngModel)]="clienteForm.nome">
 
-    <label for="cpf">CPF</label>
-    <input id="cpf" name="cpf" type="text" placeholder="000.000.000-00"
-      [(ngModel)]="clienteForm.cpf">
+      <label for="cpf">CPF</label>
+      <input id="cpf" name="cpf" type="text" placeholder="000.000.000-00"
+        [(ngModel)]="clienteForm.cpf">
 
-    <label for="email">Email</label>
-    <input id="email" name="email" type="email" autocomplete="username" placeholder="email@exemplo.com"
-      [(ngModel)]="clienteForm.email">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" autocomplete="username"
+        placeholder="email@exemplo.com" [(ngModel)]="clienteForm.email">
 
-    <label for="senha">Senha</label>
-    <input id="senha" name="senha" type="password" autocomplete="new-password"
-      [(ngModel)]="clienteForm.senha">
+      <label for="senha">Senha</label>
+      <input id="senha" name="senha" type="password" autocomplete="new-password"
+        [(ngModel)]="clienteForm.senha"
+        [placeholder]="modal === 'editar' ? 'Digite uma nova senha ou deixe em branco' : ''">
 
-    <label for="confirma">Confirme a Senha</label>
-    <input id="confirma" name="confirma" type="password" autocomplete="new-password"
-      [(ngModel)]="confirmarSenha">
+      <label for="confirma">Confirme a Senha</label>
+      <input id="confirma" name="confirma" type="password" autocomplete="new-password"
+        [(ngModel)]="confirmarSenha">
 
-    <div class="direita">
+      <div class="direita">
 
-      <button type="submit" class="botao-dourado pilula">
-        {{ modal === 'editar' ? 'Alterar' : 'Cadastrar cliente' }}
-      </button>
+        <button type="submit" class="botao-dourado pilula">
+          {{ modal === 'editar' ? 'Alterar' : 'Cadastrar cliente' }}
+        </button>
 
-    </div>
+      </div>
 
-  </form>
+    </form>
 
-</div>
+  </div>
 
 }
 
 
 @if (modal === 'excluir') {
 
-<div class="fundo-modal" (click)="fecharModal()">
+  <div class="fundo-modal" (click)="fecharModal()">
 
-  <div class="cartao excluir" (click)="$event.stopPropagation()">
+    <div class="cartao excluir" (click)="$event.stopPropagation()">
 
-    <h2>Confirmar Exclusão</h2>
-    <p class="nome-excluir">{{ clienteSelecionado.nome }}</p>
+      <h2>Confirmar Exclusão</h2>
+      <p class="nome-excluir">{{ clienteSelecionado.nome }}</p>
 
-    <div class="botoes-excluir">
+      <div class="botoes-excluir">
 
-      <button type="button" class="botao-dourado pilula" (click)="fecharModal()">
-        Não
-      </button>
+        <button type="button" class="botao-dourado pilula" (click)="fecharModal()">
+          Não
+        </button>
 
-      <button type="button" class="botao-contorno pilula" (click)="confirmarExclusao()">
-        Sim
-      </button>
+        <button type="button" class="botao-contorno pilula" (click)="confirmarExclusao()">
+          Sim
+        </button>
+
+      </div>
 
     </div>
 
   </div>
 
-</div>
+}
+
+
+@if (mensagem) {
+
+  <div class="fundo-modal" (click)="fecharMensagem()">
+
+    <div class="cartao registrar" (click)="$event.stopPropagation()">
+
+      <h2>{{ mensagem }}</h2>
+
+      <div class="direita">
+
+        <button type="button" class="botao-dourado pilula" (click)="fecharMensagem()">
+          OK
+        </button>
+
+      </div>
+
+    </div>
+
+  </div>
 
 }
