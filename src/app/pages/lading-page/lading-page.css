@@ -1,420 +1,463 @@
-*{
-    padding: 0px;
-    margin: 0px;
+
+/* ==============================
+   CONFIGURAÇÕES GERAIS
+============================== */
+
+* {
+    margin: 0;
+    padding: 0;
     box-sizing: border-box;
 }
 
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.container p{
-    width: 25%;
-    display: inline-block;
-    color: #ffffff;
-    font-size: 48px;
-    text-align: center;
-}
-
-.container button{
-    font-size: 20px;
-    background-color: #D4AF37;
-    width: 248px;
-    height: 30px;
-    margin-top: 15px;
-    border-radius: 15px;
-    margin: 10px auto 0px auto;
-}
-
-#caixaRegistro{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 100px;
-    margin-bottom: 100px;
-}    
-
-.cardPromocao {
-    width: 600px;
-    height: 325px;
-    background-color: #171717ee;
-    border: 1px solid #e6b928;
-    border-radius: 20px;
-
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-
-.cardPromocao h2 {
-    margin: 10px 0;
-    color: white;
-}
-
-section > .cardPromocao{
-    margin: 50px;
-}
-
-.conteudoCard {
-    width: 555px;
-    height: 200px;
-    background-color: #666;
-    border: 1px solid #e6b928;
-    border-radius: 15px;
-    
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.conteudoCard img {
-    width: 245px;
-    height: 126px;
-    object-fit: cover;
-    border-radius: 10px;
-}
-
-.informacoes {
-    color: white;
-    padding-left: 10px;
-
-}
-
-.informacoes h3,
-.informacoes p {
-    margin: 10px;
-}
-
-.parteInferior {
+main {
     width: 100%;
+    overflow-x: hidden;
+    color: #ffffff;
+}
+
+button {
+    cursor: pointer;
+    transition: background-color 0.2s, transform 0.2s;
+}
+
+
+/* ==============================
+   APRESENTAÇÃO E PROMOÇÃO
+============================== */
+
+#caixaRegistro {
     display: flex;
-    justify-content: space-between;
     align-items: center;
+    justify-content: space-evenly;
+    gap: 50px;
+    padding: 75px 7%;
+    margin-bottom: 40px;
 }
 
-.parteInferior strong {
-    color: white;
-    font-size: 25px;
+.container {
+    flex: 1;
+    max-width: 500px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
 }
 
-.parteInferior button {
-    background-color: #e6b928;
+.destaque-texto {
+    color: #D4AF37;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 4px;
+    margin-bottom: 20px;
+}
+
+.container p {
+    font-size: 43px;
+    line-height: 1.2;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.botao-registro {
+    margin-top: 25px;
+    padding: 13px 35px;
+    background-color: #D4AF37;
     border: none;
-    border-radius: 20px;
-    padding: 8px 20px;
+    border-radius: 6px;
+    font-size: 16px;
     font-weight: bold;
 }
 
-.card button:hover,.parteInferior button:hover,.container button:hover{
-    background-color: #F1D77A;
-}
-
-h1{
-    color: #ffffff; 
-    font-size: 70px;
-    width: 800px;
-    height: 168px;
-    margin: 0 auto;
-    text-align: center;
-    background-color: #171717b2;
-    border-radius: 15px;
-    border: 1px solid #D4AF37;
-}
-
-h2{
-    color: #ffffff; 
-    font-size: 60px;
-    text-align: center;
-    margin: 200px 100px;
-    text-decoration: underline;
+.botao-registro a {
+    color: #171717;
+    text-decoration: none;
 }
 
 
+/* ==============================
+   PROMOÇÃO DO DIA
+============================== */
 
-.cards {
+.cardPromocao {
+    width: 500px;
+    max-width: 100%;
+    padding: 25px;
+    background-color: #1b1b1b;
+    border: 1px solid #705b25;
+    border-radius: 12px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.25);
+}
+
+.cardPromocao h2 {
+    font-size: 25px;
+    text-align: left;
+    margin-bottom: 20px;
+    color: #D4AF37;
+}
+
+.conteudoCard {
+    display: grid;
+    grid-template-columns: 45% 1fr;
+    gap: 15px;
+    align-items: center;
+}
+
+.conteudoCard img {
+    width: 100%;
+    height: 145px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.informacoes {
+    color: #ffffff;
+}
+
+.informacoes h3 {
+    font-size: 19px;
+    margin-bottom: 12px;
+}
+
+.informacoes p {
+    color: #bdbdbd;
+    font-size: 14px;
+    margin-bottom: 7px;
+}
+
+.parteInferior {
+    grid-column: 1 / -1;
     display: flex;
     justify-content: space-between;
-    width: 1200px;    
+    align-items: center;
+    gap: 10px;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #444;
+}
+
+.parteInferior strong {
+    font-size: 23px;
+    color: #D4AF37;
+}
+
+.parteInferior button {
+    padding: 10px 18px;
+    background-color: #D4AF37;
+    color: #171717;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+}
+
+.mensagem-vazia {
+    color: #bdbdbd;
+    padding: 20px 0;
+}
+
+
+/* ==============================
+   TÍTULO DO CATÁLOGO
+============================== */
+
+.secao-catalogo {
+    width: 100%;
+    padding: 35px 7% 80px;
+}
+
+.titulo-catalogo {
+    max-width: 750px;
+    margin: 0 auto 65px;
+    text-align: center;
+}
+
+.titulo-catalogo span {
+    color: #D4AF37;
+    font-size: 13px;
+    font-weight: bold;
+    letter-spacing: 3px;
+}
+
+.titulo-catalogo h1 {
+    margin-top: 15px;
+    font-size: 43px;
+    line-height: 1.2;
+    color: #ffffff;
+}
+
+.titulo-catalogo p {
+    margin-top: 15px;
+    color: #aaaaaa;
+    font-size: 16px;
+}
+
+.secao-catalogo > h2 {
+    font-size: 30px;
+    text-align: center;
+    margin-bottom: 35px;
+    color: #D4AF37;
+}
+
+.mensagem-catalogo {
+    text-align: center;
+    color: #bdbdbd;
     padding: 30px;
-    margin: 60px auto;
-    background-color: #171717ee;
-    border: 1px solid #e6b928;
-    border-radius: 20px;
+}
+
+
+/* ==============================
+   CARDS DOS VEÍCULOS
+============================== */
+
+.cards,
+.cards-modal {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 25px;
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .card {
-    width: 350px;
-    height: 450px;
-    background-color: #666;
-    border-radius: 10px;
-
+    min-width: 0;
+    min-height: 400px;
     display: flex;
     flex-direction: column;
+    overflow: hidden;
+    background-color: #1c1c1c;
+    border: 1px solid #383838;
+    border-radius: 10px;
+    transition: transform 0.2s, border-color 0.2s;
 }
 
-.card img {
+.card:hover {
+    transform: translateY(-5px);
+    border-color: #D4AF37;
+}
+
+.card > img {
     width: 100%;
-    height: 130px;
+    height: 200px;
     object-fit: cover;
 }
 
-.card h2 {
-    margin: 10px;
-    color: white;
+.informacoes-card {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
 }
 
-.card p {
-    margin: 0 10px;
-    color: white;
+.informacoes-card h3 {
+    font-size: 21px;
+    margin-bottom: 18px;
+    color: #ffffff;
 }
 
 .detalhes {
     display: flex;
     justify-content: space-between;
-    margin: 15px 10px;
-    color: white;
+    gap: 10px;
+    margin-bottom: 20px;
+    color: #aaaaaa;
+    font-size: 14px;
 }
 
-.card strong {
-    margin: 5px 10px;
-    color: white;
-    font-size: 22px;
+.informacoes-card strong {
+    color: #D4AF37;
+    font-size: 23px;
+    margin-bottom: 20px;
 }
 
-.card button {
-    margin: auto 10px 15px;
-    padding: 10px;
-
-    background-color: #e6b928;
+.informacoes-card button {
+    width: 100%;
+    margin-top: auto;
+    padding: 12px;
+    background-color: #D4AF37;
+    color: #171717;
     border: none;
-    border-radius: 10px;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: bold;
+}
 
+.informacoes-card button:hover,
+.parteInferior button:hover,
+.botao-registro:hover,
+.botao-ver-mais:hover,
+.fechar-modal:hover {
+    background-color: #F1D77A;
+}
+
+
+/* ==============================
+   BOTÃO VER MAIS
+============================== */
+
+.botao-ver-mais {
+    display: block;
+    margin: 40px auto 0;
+    padding: 14px 35px;
+    background-color: transparent;
+    color: #D4AF37;
+    border: 1px solid #D4AF37;
+    border-radius: 6px;
     font-size: 16px;
     font-weight: bold;
 }
 
-@media (max-width: 1024px) {
+.botao-ver-mais:hover {
+    color: #171717;
+}
+
+
+/* ==============================
+   MODAL
+============================== */
+
+.modal-veiculos {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 30px 15px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.85);
+}
+
+.conteudo-modal {
+    width: 90%;
+    max-width: 1200px;
+    max-height: 85vh;
+    margin: 0 auto;
+    padding: 25px;
+    overflow-y: auto;
+    background-color: #171717;
+    border: 1px solid #705b25;
+    border-radius: 12px;
+}
+
+.fechar-modal {
+    display: block;
+    margin-left: auto;
+    padding: 9px 14px;
+    background-color: #D4AF37;
+    color: #171717;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.conteudo-modal > h2 {
+    margin: 20px 0 30px;
+    color: #D4AF37;
+    font-size: 30px;
+    text-align: center;
+}
+
+.cards-modal {
+    padding-bottom: 10px;
+}
+
+
+/* ==============================
+   RESPONSIVIDADE
+============================== */
+
+@media (max-width: 900px) {
 
     #caixaRegistro {
         flex-direction: column;
         align-items: center;
-        gap: 50px;
-        margin-top: 60px;
-        margin-bottom: 80px;
+        padding: 60px 5%;
+    }
+
+    .container {
+        align-items: center;
+        text-align: center;
     }
 
     .container p {
-        width: 80%;
-        font-size: 40px;
+        font-size: 36px;
     }
 
-    .cardPromocao {
-        width: 90%;
-        max-width: 600px;
+    .cards,
+    .cards-modal {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
     }
 
-    .conteudoCard {
-        width: 92%;
-    }
-
-    h1 {
-        width: 80%;
-        height: auto;
-        padding: 30px 20px;
-        font-size: 50px;
-    }
-
-    h2 {
-        font-size: 45px;
-        margin: 120px 20px 60px;
-    }
-
-    .cards {
-        width: 90%;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 30px;
-    }
-
-    .card {
-        width: 350px;
+    .titulo-catalogo h1 {
+        font-size: 36px;
     }
 }
-
 
 
 @media (max-width: 600px) {
 
     #caixaRegistro {
-        flex-direction: column;
-        align-items: center;
+        padding: 40px 20px;
         gap: 40px;
-        margin-top: 40px;
-        margin-bottom: 60px;
-        padding: 0 15px;
-    }
-
-    .container {
-        width: 100%;
     }
 
     .container p {
-        width: 100%;
-        font-size: 32px;
-        line-height: 1.2;
-    }
-
-    .container button {
-        width: 200px;
-        height: 40px;
-        font-size: 18px;
-    }
-
-
-    .cardPromocao {
-        width: 100%;
-        max-width: 400px;
-        height: auto;
-        padding: 10px;
-    }
-
-    .cardPromocao h2 {
-        font-size: 25px;
-        margin: 5px 0 15px;
-    }
-
-    .conteudoCard {
-        width: 100%;
-        height: auto;
-        padding: 10px;
-        flex-direction: column;
-        flex-wrap: nowrap;
-        align-items: center;
-    }
-
-    .conteudoCard img {
-        width: 100%;
-        height: 160px;
-    }
-
-    .informacoes {
-        width: 100%;
-        padding-left: 0;
-        text-align: center;
-    }
-
-    .informacoes h3,
-    .informacoes p {
-        margin: 5px;
-    }
-
-    .informacoes h3 {
-        font-size: 22px;
-    }
-
-    .informacoes p {
-        font-size: 15px;
-    }
-
-    .parteInferior {
-        margin-top: 15px;
-        gap: 10px;
-    }
-
-    .parteInferior strong {
-        font-size: 20px;
-    }
-
-    .parteInferior button {
-        padding: 8px 12px;
-        font-size: 13px;
-    }
-
-
-    h1 {
-        width: calc(100% - 30px);
-        height: auto;
-        padding: 25px 15px;
-        font-size: 34px;
-        line-height: 1.15;
-    }
-
-
-    h2 {
-        font-size: 35px;
-        margin: 80px 15px 40px;
-    }
-
-
-    .cards {
-        width: calc(100% - 30px);
-        padding: 15px;
-        margin: 30px auto;
-        flex-direction: column;
-        align-items: center;
-        gap: 25px;
-    }
-
-
-
-    .card {
-        width: 100%;
-        max-width: 350px;
-        height: 430px;
-    }
-
-    .card img {
-        height: 160px;
-    }
-
-    .card h2 {
-        font-size: 28px;
-        margin: 10px;
-    }
-
-    .card p {
-        font-size: 15px;
-    }
-
-    .detalhes {
-        margin: 12px 10px;
-    }
-
-    .card strong {
-        font-size: 20px;
-    }
-
-    .card button {
-        font-size: 15px;
-    }
-}
-
-
-@media (max-width: 380px) {
-
-    .container p {
-        font-size: 28px;
-    }
-
-    .cardPromocao {
-        padding: 8px;
-    }
-
-    .conteudoCard img {
-        height: 140px;
-    }
-
-    h1 {
-        font-size: 29px;
-    }
-
-    h2 {
         font-size: 30px;
     }
 
+    .cardPromocao {
+        width: 100%;
+        padding: 18px;
+    }
+
+    .conteudoCard {
+        grid-template-columns: 1fr;
+    }
+
+    .conteudoCard img {
+        height: 190px;
+    }
+
+    .parteInferior {
+        flex-wrap: wrap;
+    }
+
+    .secao-catalogo {
+        padding: 30px 18px 60px;
+    }
+
+    .titulo-catalogo {
+        margin-bottom: 45px;
+    }
+
+    .titulo-catalogo h1 {
+        font-size: 30px;
+    }
+
+    .titulo-catalogo p {
+        font-size: 14px;
+    }
+
+    .secao-catalogo > h2 {
+        font-size: 26px;
+    }
+
+    .cards,
+    .cards-modal {
+        grid-template-columns: 1fr;
+        max-width: 380px;
+    }
+
     .card {
-        height: 410px;
+        min-height: 390px;
+    }
+
+    .conteudo-modal {
+        width: 100%;
+        padding: 15px;
+    }
+
+    .conteudo-modal > h2 {
+        font-size: 25px;
     }
 }
