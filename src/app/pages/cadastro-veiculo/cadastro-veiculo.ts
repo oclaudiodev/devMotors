@@ -120,6 +120,5 @@ export class CadastroVeiculo implements OnInit {
   fecharModal() {
     this.exibirFormulario = false;
     this.exibirModalExcluir = false;
-    this.cdr.detectChanges();
   }
 }
