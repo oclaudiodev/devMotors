@@ -13,9 +13,9 @@ export const routes: Routes = [
   { path: 'carrinho', component: Carrinho },
   { path: 'login', component: Login },
   { path: 'cadastro-veiculo', component: CadastroVeiculo },
+  { path: 'cadastro-veiculo/:id', component: CadastroVeiculo },
   { path: 'registro', component: Registro },
   { path: 'admin', component: PgAdmin },
-  { path: 'cadastro-cliente', component: CadastroCliente }
+  { path: 'cadastro-cliente', component: CadastroCliente },
+  { path: 'cadastro-cliente/:id', component: CadastroCliente }
 ];
-
-

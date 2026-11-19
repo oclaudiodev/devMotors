@@ -27,4 +27,8 @@ export class VeiculoService {
   excluir(id: string): Observable<void> {
     return this.http.delete<void>(`${this.API}/${id}`);
   }
+
+  buscarPorId(id: string): Observable<Veiculo> {
+    return this.http.get<Veiculo>(`${this.API}/${id}`);
+  }
 }

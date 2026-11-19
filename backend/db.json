@@ -81,5 +81,24 @@
       "ano": 2026
     }
   ],
+  "clientes": [
+    {
+      "id": "1",
+      "cpf": "12345678910",
+      "nome": "João",
+      "sobrenome": "Martins da Silva",
+      "dataNascimento": "1995-04-12",
+      "email": "joao.martins@email.com"
+    },
+    {
+      "id": "2",
+      "cpf": "98765432111",
+      "nome": "Mariana",
+      "sobrenome": "Oliveira Santos",
+      "dataNascimento": "1998-02-25",
+      "email": "mariana.oliveira@email.com",
+      "senha": "11"
+    }
+  ],
   "$schema": "./node_modules/json-server/schema.json"
 }
