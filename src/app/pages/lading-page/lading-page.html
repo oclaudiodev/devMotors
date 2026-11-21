@@ -27,7 +27,7 @@
 
           <div class="parteInferior">
             <strong>R$ {{ carros[0].valor }}</strong>
-            <button>Compre agora</button>
+            <button (click)="comprarAgora(carros[0])">Compre agora</button>
           </div>
         </div>
       } @else {
@@ -62,7 +62,7 @@
 
               <strong>R$ {{ carro.valor }}</strong>
 
-              <button>Adicionar ao carrinho</button>
+              <button (click)="adicionarAoCarrinho(carro)">Adicionar ao carrinho</button>
             </div>
           </div>
         }
@@ -96,7 +96,7 @@
 
               <strong>R$ {{ carro.valor }}</strong>
 
-              <button>Adicionar ao carrinho</button>
+              <button (click)="adicionarAoCarrinho(carro)">Adicionar ao carrinho</button>
             </div>
           </div>
         }

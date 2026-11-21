@@ -6,112 +6,84 @@
         <h2>Suas escolhas:</h2>
     </div>
 
-    <table>
-        <thead>
-            <tr>
-                <th>Foto</th>
-                <th>Carro</th>
-                <th>Quantidade</th>
-                <th>Preço</th>
-                <th>Ação</th>
-            </tr>
-        </thead>
+    @if (itens$ | async; as itens) {
 
-        <tbody>
-            <tr>
-                <td>
-                    <img 
-                        class="img-carro"
-                        src="https://img.odcdn.com.br/wp-content/uploads/2023/05/2023-fiat-topolino.jpg"
-                        alt="Carro"
-                    >
-                </td>
+        @if (itens.length > 0) {
 
-                <td>Carro das antiga</td>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Foto</th>
+                        <th>Carro</th>
+                        <th>Quantidade</th>
+                        <th>Preço</th>
+                        <th>Ação</th>
+                    </tr>
+                </thead>
 
-                <td>1</td>
+                <tbody>
+                    @for (item of itens; track item.veiculo.id) {
+                        <tr>
+                            <td>
+                                <img
+                                    class="img-carro"
+                                    [src]="item.veiculo.imagem"
+                                    [alt]="item.veiculo.marca + ' ' + item.veiculo.modelo"
+                                >
+                            </td>
 
-                <td>R$ 50.000,00</td>
+                            <td>{{ item.veiculo.marca }} {{ item.veiculo.modelo }}</td>
 
-                <td>
-                    <button type="button"class="excluir"(click)="abrirModalExcluir()">
-                        <img 
-                            src="images/lixeira.png" 
-                            alt="Excluir" 
-                            class="icone-btn"
-                        />
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img 
-                        class="img-carro"
-                        src="https://s2-techtudo.glbimg.com/srZjXTzBpmIEs_BDMXGjazLVA34=/0x0:620x408/984x0/smart/filters:strip_icc()/i.s3.glbimg.com/v1/AUTH_08fbf48bc0524877943fe86e43087e7a/internal_photos/bs/2021/2/M/khQa50TAADCnWXVqeL1g/2012-01-06-misha-01.jpg"
-                        alt="Carro2"
-                    >
-                </td>
+                            <td>
+                                <div class="controle-quantidade">
+                                    <button type="button" class="btn-quantidade" (click)="diminuirQuantidade(item)">-</button>
+                                    <span>{{ item.quantidade }}</span>
+                                    <button type="button" class="btn-quantidade" (click)="aumentarQuantidade(item)">+</button>
+                                </div>
+                            </td>
 
-                <td>Carro das antiga</td>
+                            <td>R$ {{ formatarPreco(item.veiculo.valor * item.quantidade) }}</td>
 
-                <td>1</td>
+                            <td>
+                                <button type="button" class="excluir" (click)="abrirModalExcluir(item)">
+                                    <img
+                                        src="images/lixeira.png"
+                                        alt="Excluir"
+                                        class="icone-btn"
+                                    />
+                                </button>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
 
-                <td>R$ 50.000,00</td>
+            <div class="cupom">
+                <div>
+                    <label for="cupom">Cupom promocional:</label>
+                    <input type="text" id="cupom" name="cupom" placeholder="digite seu cupom aqui">
+                </div>
 
-                <td>
-                    <button type="button"class="excluir"(click)="abrirModalExcluir()">
-                        <img 
-                            src="images/lixeira.png" 
-                            alt="Excluir" 
-                            class="icone-btn"
-                        />
-                    </button>
-                </td>
-            </tr>
-            <tr>
-                <td>
-                    <img 
-                        class="img-carro"
-                        src="https://uploads.automaistv.com.br/2024/02/gurgel_br-800_2-1320x792.jpg"
-                        alt="Carro3"
-                    >
-                </td>
+                <div>
+                    <p>Total: R$ {{ formatarPreco((total$ | async) ?? 0) }}</p>
+                </div>
+            </div>
 
-                <td>Carro das antiga</td>
+            <div class="comprar">
+                <button (click)="comprar()">
+                    Comprar
+                </button>
+            </div>
 
-                <td>1</td>
+        } @else {
 
-                <td>R$ 50.000,00</td>
+            <p class="carrinho-vazio">
+                Seu carrinho está vazio. Volte à página inicial para adicionar veículos.
+            </p>
 
-                <td>
-                    <button type="button"class="excluir"(click)="abrirModalExcluir()">
-                        <img 
-                            src="images/lixeira.png" 
-                            alt="Excluir" 
-                            class="icone-btn"
-                        />
-                    </button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+        }
 
-    <div class="cupom">
-        <div>
-            <label for="cupom">Cupom promocional:</label>
-            <input type="text" id="cupom" name="cupom" placeholder="digite seu cupom aqui">
-        </div>
-        
-        <div>
-            <p>Total: R$ 150.000,00</p>
-        </div>
-    </div>
-
-    <div class="comprar">
-        <button>
-            Comprar
-        </button>
-    </div>
+    }
 
     @if (exibirModalExcluir) {
     <div class="modal-overlay">
@@ -125,17 +97,17 @@
 
             <div class="botoes-confirmacao">
 
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     class="btn-nao"
                     (click)="fecharModal()">
                     Não
                 </button>
 
-                <button 
-                    type="button" 
+                <button
+                    type="button"
                     class="btn-sim"
-                    (click)="fecharModal()">
+                    (click)="confirmarExclusao()">
                     Sim
                 </button>
 
@@ -144,6 +116,5 @@
         </div>
     </div>
     }
-
 
 </div>
